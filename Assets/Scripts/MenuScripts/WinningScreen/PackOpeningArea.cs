@@ -36,8 +36,7 @@ public class PackOpeningArea : MonoBehaviour {
     private BoxCollider col;
     private List<GameObject> CardsFromPackCreated = new List<GameObject>();
     private int numOfCardsOpened = 0;
-    
-    
+
     public int NumberOfCardsOpenedFromPack 
     { 
         get{ return numOfCardsOpened; } 

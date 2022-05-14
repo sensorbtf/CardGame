@@ -11,7 +11,8 @@ public class TurnOverCardFromPack : MonoBehaviour {
     private float InitialScale;
     private float scaleFactor = 1.2f;
     private OneCardManager manager;
-   // public DeckBuilder deckBuilder;
+    private PackOpeningArea packOpeningArea;
+    // public DeckBuilder deckBuilder;
 
     private bool turnedOver = true;
 
@@ -19,6 +20,7 @@ public class TurnOverCardFromPack : MonoBehaviour {
     {
         InitialScale = transform.localScale.x;
         manager = GetComponent<OneCardManager>();
+        packOpeningArea = GetComponent<PackOpeningArea>();
     }
 
     void OnMouseDown()
@@ -27,9 +29,10 @@ public class TurnOverCardFromPack : MonoBehaviour {
         if (turnedOver == true)
         {
             turnedOver = false;
+
             // ustawić tak, żeby po wyborze pozostałe karty się cofały (selected? OneCardManager?)
             transform.DOScale(InitialScale * scaleFactor, 0.5f);
-
+           
             CardCollection.Instance.QuantityOfEachCard[card]++;
             //deckBuilder.AddCard(card);
             ShopManager.Instance.OpeningArea.NumberOfCardsOpenedFromPack++;
@@ -53,4 +56,5 @@ public class TurnOverCardFromPack : MonoBehaviour {
     {
         Glow.DOColor(Color.clear, 0.5f);
     }
+
 }
