@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d0908daef51232b4db3a24a9a6cc1a5b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Devinne Swash
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a53be58aea36e7c48af3f308c36e8c14, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
