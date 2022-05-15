@@ -27,7 +27,6 @@ public class SingleGameStart : MonoBehaviour
         switch (TargetState)
         {
             case MenuState.MapScreen:
-                Debug.LogWarning("done");
                 mapScreen.SetActive(true);
                 deckScreenContent.ShowScreen();
                 break;

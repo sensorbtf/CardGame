@@ -26,16 +26,20 @@ public class TurnOverCardFromPack : MonoBehaviour {
     void OnMouseDown()
     {
         var card = manager.cardAsset;
+        var deckToAddTheCard = DecksStorage.Instance.AllDecks[0]; // selecting first deck
         if (turnedOver == true)
         {
             turnedOver = false;
 
             // ustawić tak, żeby po wyborze pozostałe karty się cofały (selected? OneCardManager?)
+
             transform.DOScale(InitialScale * scaleFactor, 0.5f);
-           
             CardCollection.Instance.QuantityOfEachCard[card]++;
-            //deckBuilder.AddCard(card);
             ShopManager.Instance.OpeningArea.NumberOfCardsOpenedFromPack++;
+
+            deckToAddTheCard.Cards.Add(card); // adding to only one deck
+            DecksStorage.Instance.SaveDecksIntoPlayerPrefs();
+
         }
         else
         {
@@ -56,5 +60,4 @@ public class TurnOverCardFromPack : MonoBehaviour {
     {
         Glow.DOColor(Color.clear, 0.5f);
     }
-
 }

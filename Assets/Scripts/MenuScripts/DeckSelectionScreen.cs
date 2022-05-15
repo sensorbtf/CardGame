@@ -14,6 +14,7 @@ public class DeckSelectionScreen : MonoBehaviour {
     void Awake()
     {
         Instance = this;
+        ShowDecks();
         // HideScreen(); solving the main menu
     }
     public void ShowDecks()
@@ -43,7 +44,6 @@ public class DeckSelectionScreen : MonoBehaviour {
     public void ShowScreen()
     {
         ScreenContent.SetActive(true);
-        ShowDecks();
         HeroPanelDeckSelection.OnOpen();
     }
 

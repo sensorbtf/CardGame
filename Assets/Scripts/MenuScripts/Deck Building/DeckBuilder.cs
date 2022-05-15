@@ -9,8 +9,8 @@ public class DeckBuilder : MonoBehaviour
     public Transform Content;
     public InputField DeckName;
 
-    public int SameCardLimit = 2;
-    public int AmountOfCardsInDeck = 11;
+    public int SameCardLimit = 4;
+    public int AmountOfCardsInDeck = 100000;
 
     public GameObject DeckCompleteFrame;
 
@@ -31,9 +31,9 @@ public class DeckBuilder : MonoBehaviour
         if (!InDeckBuildingMode)
             return;
 
-        // if the deck is already full 
-        if (deckList.Count == AmountOfCardsInDeck)
-            return;
+        //// if the deck is already full 
+        //if (deckList.Count == AmountOfCardsInDeck)
+        //    return;
 
         int count = NumberOfThisCardInDeck(asset);
 

@@ -10,6 +10,8 @@ public class ListOfDecksInCollection : MonoBehaviour {
     // this is also a prefab
     public GameObject NewDeckButtonPrefab;
 
+    private const int MaxAmountOfDecks = 1;
+
     public void UpdateList()
     {
         // delete all the deck icons first
@@ -31,7 +33,7 @@ public class ListOfDecksInCollection : MonoBehaviour {
         }
 
         // if there is room to create more decks, create a NewDeckButton
-        if (DecksStorage.Instance.AllDecks.Count < 9)
+        if (DecksStorage.Instance.AllDecks.Count < MaxAmountOfDecks)
         {
             GameObject g = Instantiate(NewDeckButtonPrefab, Content);
             g.transform.localScale = Vector3.one;

@@ -44,7 +44,7 @@ public class HeroInfoPanel : MonoBehaviour {
 
     public void SelectDeck(DeckIcon deck)
     {
-        if (deck == null || selectedDeck == deck || !deck.DeckInformation.IsComplete())
+        if (deck == null || selectedDeck == deck)
         {
             portrait.gameObject.SetActive(false);
             selectedDeck = null;
@@ -52,16 +52,13 @@ public class HeroInfoPanel : MonoBehaviour {
                 PlayButton.interactable = false;
         }
         else
-        {           
+        {
             portrait.charAsset = deck.DeckInformation.Character;
             portrait.ApplyLookFromAsset();
             portrait.gameObject.SetActive(true);
             selectedDeck = deck;
             // instantly load this information to our BattleStartInfo.
             BattleStartInfo.SelectedDeck = selectedDeck.DeckInformation;
-
-            if (PlayButton!=null)
-                PlayButton.interactable = true;
         }
     }
 

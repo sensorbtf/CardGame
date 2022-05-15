@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(BoxCollider))]
 public class PackOpeningArea : MonoBehaviour {
-
+    public static PackOpeningArea Instance;
     public bool AllowedToDragAPack{ get; set;}
     public GameObject SpellCardFromPackPrefab;
     public GameObject CreatureCardFromPackPrefab;
@@ -34,7 +34,7 @@ public class PackOpeningArea : MonoBehaviour {
     public Transform[] SlotsForCards;
 
     private BoxCollider col;
-    private List<GameObject> CardsFromPackCreated = new List<GameObject>();
+    public  List<GameObject> CardsFromPackCreated = new List<GameObject>();
     private int numOfCardsOpened = 0;
 
     public int NumberOfCardsOpenedFromPack 
@@ -57,6 +57,8 @@ public class PackOpeningArea : MonoBehaviour {
 
     void Awake()
     {
+        Instance = this;
+
         col = GetComponent<BoxCollider>();
         AllowedToDragAPack = true;
 

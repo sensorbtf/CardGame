@@ -18,10 +18,7 @@ public class DeckInfo
         DeckName = deckName;
     }
 
-    public bool IsComplete()
-    {
-        return (DeckBuildingScreen.Instance.BuilderScript.AmountOfCardsInDeck == Cards.Count);
-    }
+
 
     public int NumberOfThisCardInDeck (CardAsset asset)
     {
@@ -71,9 +68,9 @@ public class DecksStorage : MonoBehaviour {
             string deckNameKey = "DeckName" + i.ToString();
             string[] DeckAsCardNames = PlayerPrefsX.GetStringArray(deckListKey);
 
-            Debug.Log("Has character key: " + PlayerPrefs.HasKey(characterKey));
-            Debug.Log("Has Deckname key: " + PlayerPrefs.HasKey(deckNameKey));
-            Debug.Log("Length of DeckAsCardNames: " + DeckAsCardNames.Length);
+            //Debug.Log("Has character key: " + PlayerPrefs.HasKey(characterKey));
+            //Debug.Log("Has Deckname key: " + PlayerPrefs.HasKey(deckNameKey));
+            //Debug.Log("Length of DeckAsCardNames: " + DeckAsCardNames.Length);
 
             if (DeckAsCardNames.Length > 0 && PlayerPrefs.HasKey(characterKey) && PlayerPrefs.HasKey(deckNameKey))
             {
@@ -93,7 +90,7 @@ public class DecksStorage : MonoBehaviour {
             if (DecksFound.Count == 0)
             {
                 DecksFound = new List<DeckInfo>(defaultDecks);
-            Debug.LogWarning("WCZYTANO DEFAULTOWE DECKI");
+            //Debug.LogWarning("Default deck loaded");
             }
         AllDecks = DecksFound;
 

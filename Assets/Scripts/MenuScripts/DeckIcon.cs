@@ -25,9 +25,7 @@ public class DeckIcon : MonoBehaviour
     {
         DeckInformation = info;
 
-        // check if this deck is complete
-        DeckNotCompleteObject.SetActive(!info.IsComplete());
-           
+
         portrait.charAsset = info.Character;
         portrait.ApplyLookFromAsset();
         DeckNameText.text = info.DeckName;
@@ -40,8 +38,7 @@ public class DeckIcon : MonoBehaviour
         {
             selected = true;
             // zoom in on the deck only if it is complete
-            if (DeckInformation.IsComplete())
-                transform.DOScale(TargetScale, 0.5f);
+            transform.DOScale(TargetScale, 0.5f);
 
             DeckSelectionScreen.Instance.HeroPanelDeckSelection.SelectDeck(this);
             // deselect all the other Portrait Menu buttons 
