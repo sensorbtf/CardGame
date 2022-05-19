@@ -18,8 +18,8 @@ public class HeroInfoPanel : MonoBehaviour {
         
     public void OnOpen()
     {
-        SelectCharacter(null);
-        SelectDeck(null);
+        //SelectCharacter(null);
+        //SelectDeck(null);
     }
 
     public void SelectCharacter(PortraitMenu menuPortrait)

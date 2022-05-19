@@ -51,4 +51,8 @@ public class DeckSelectionScreen : MonoBehaviour {
     {
         ScreenContent.SetActive(false);
     }
+    public void SelectDeck()
+    {
+        BattleStartInfo.SelectedDeck = DecksStorage.Instance.AllDecks[0];
+    }
 }

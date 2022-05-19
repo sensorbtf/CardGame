@@ -31,10 +31,11 @@ public class TurnOverCardFromPack : MonoBehaviour {
         {
             turnedOver = false;
 
-            // ustawić tak, żeby po wyborze pozostałe karty się cofały (selected? OneCardManager?)
+            
 
             transform.DOScale(InitialScale * scaleFactor, 0.5f);
-            CardCollection.Instance.QuantityOfEachCard[card]++;
+            CardCollection.Instance.QuantityOfEachCard[card]++; // adding to collection - not working!
+
             ShopManager.Instance.OpeningArea.NumberOfCardsOpenedFromPack++;
 
             deckToAddTheCard.Cards.Add(card); // adding to only one deck

@@ -51,7 +51,6 @@ public class MapLevel : MonoBehaviour
         currentLevelCounter--;
     }
 
-
     void Awake()
     {
         SetLevelActive();

@@ -142,7 +142,7 @@ public class PackOpeningArea : MonoBehaviour {
     {
         CardAsset a = ListOfRandomizedCards(rarity);
 
-      //  CardCollection.Instance.QuantityOfEachCard[a]++;
+        //CardCollection.Instance.QuantityOfEachCard[a]++;
 
         GameObject card;
         if (a.TypeOfCard == TypesOfCards.Creature)
@@ -159,6 +159,7 @@ public class PackOpeningArea : MonoBehaviour {
 
     public void Done()
     {
+
         AllowedToDragAPack = true;
         NumberOfCardsOpenedFromPack = 0;
         while (CardsFromPackCreated.Count > 0)

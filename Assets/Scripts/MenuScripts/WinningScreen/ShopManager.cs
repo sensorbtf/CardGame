@@ -38,7 +38,7 @@ public class ShopManager : MonoBehaviour {
            // Debug.Log("UnopenedPacks: " + PlayerPrefs.GetInt("UnopenedPacks"));
             StartCoroutine(GivePacks(PlayerPrefs.GetInt("UnopenedPacks"), true));
         }
-        GetPackForFree();
+        GetPackForFree(); // do zmiany bo randomowo daje
         LoadDustAndMoneyToPlayerPrefs();
     }
 
