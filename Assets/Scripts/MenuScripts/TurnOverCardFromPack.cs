@@ -27,13 +27,8 @@ public class TurnOverCardFromPack : MonoBehaviour {
     {
         var card = manager.cardAsset;
         var deckToAddTheCard = DecksStorage.Instance.AllDecks[0]; // selecting first deck
-        if (turnedOver == true)
-        {
-            turnedOver = false;
-
-            
-
             transform.DOScale(InitialScale * scaleFactor, 0.5f);
+
             CardCollection.Instance.QuantityOfEachCard[card]++; // adding to collection - not working!
 
             ShopManager.Instance.OpeningArea.NumberOfCardsOpenedFromPack++;
@@ -41,16 +36,8 @@ public class TurnOverCardFromPack : MonoBehaviour {
             deckToAddTheCard.Cards.Add(card); // adding to only one deck
             DecksStorage.Instance.SaveDecksIntoPlayerPrefs();
 
-        }
-        else
-        {
-            turnedOver = true;
+            PackOpeningArea.Instance.Done();
 
-            transform.DOScale(InitialScale, 0.5f);
-
-            CardCollection.Instance.QuantityOfEachCard[card]--;
-            ShopManager.Instance.OpeningArea.NumberOfCardsOpenedFromPack--;
-        }
     }
     void OnMouseEnter()
     {

@@ -5,7 +5,7 @@ using System.Linq;
 
 public class CardCollection : MonoBehaviour 
 {
-    public int DefaultNumberOfBasicCards = 3; // how many cards of basic rarity should a character have by default;
+    public int DefaultNumberOfBasicCards = 10; // how many cards of basic rarity should a character have by default;
 
     public static CardCollection Instance;
     private Dictionary<string, CardAsset > AllCardsDictionary = new Dictionary<string, CardAsset>();
@@ -71,33 +71,12 @@ public class CardCollection : MonoBehaviour
 
     public List<CardAsset> GetCardsOfCharacter(CharacterAsset asset)
     {   
-        /*
-        // get cards that blong to a particular character or neutral if asset == null
-        var cards = from card in allCardsArray
-                                    where card.CharacterAsset == asset
-                                    select card; 
-        
-        var returnList = cards.ToList<CardAsset>();
-        returnList.Sort();
-        */
         return GetCards(true, true, false, RarityOptions.Basic, asset);
     }
 
     public List<CardAsset> GetCardsWithRarity(RarityOptions rarity)
     {
-        /*
-        // get neutral cards
-        var cards = from card in allCardsArray
-                where card.Rarity == rarity
-            select card; 
-
-        var returnList = cards.ToList<CardAsset>();
-        returnList.Sort();
-
-        return returnList;
-        */
         return GetCards(true, false, true, rarity);
-
     }
 
     /// the most general method that will use multiple filters

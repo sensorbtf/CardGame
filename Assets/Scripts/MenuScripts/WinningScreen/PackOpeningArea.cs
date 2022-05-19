@@ -159,7 +159,6 @@ public class PackOpeningArea : MonoBehaviour {
 
     public void Done()
     {
-
         AllowedToDragAPack = true;
         NumberOfCardsOpenedFromPack = 0;
         while (CardsFromPackCreated.Count > 0)
