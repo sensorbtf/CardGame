@@ -29,6 +29,11 @@ public class CardCollection : MonoBehaviour
         LoadQuantityOfCardsFromPlayerPrefs();
     }
 
+    void OnDestroy()
+    {
+        SaveQuantityOfCardsIntoPlayerPrefs();
+    }
+
     private void LoadQuantityOfCardsFromPlayerPrefs()
     {
         // TODO: load only cards from the non-basic set. Basic set should always have quantities set to some standard number, not disenchantable 

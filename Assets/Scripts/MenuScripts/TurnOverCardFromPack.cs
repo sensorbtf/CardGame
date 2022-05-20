@@ -12,9 +12,6 @@ public class TurnOverCardFromPack : MonoBehaviour {
     private float scaleFactor = 1.2f;
     private OneCardManager manager;
     private PackOpeningArea packOpeningArea;
-    // public DeckBuilder deckBuilder;
-
-    private bool turnedOver = true;
 
     void Awake()
     {
@@ -27,16 +24,17 @@ public class TurnOverCardFromPack : MonoBehaviour {
     {
         var card = manager.cardAsset;
         var deckToAddTheCard = DecksStorage.Instance.AllDecks[0]; // selecting first deck
-            transform.DOScale(InitialScale * scaleFactor, 0.5f);
 
-            CardCollection.Instance.QuantityOfEachCard[card]++; // adding to collection - not working!
+        transform.DOScale(InitialScale * scaleFactor, 0.5f);
 
-            ShopManager.Instance.OpeningArea.NumberOfCardsOpenedFromPack++;
+        CardCollection.Instance.QuantityOfEachCard[card]++; // adding to collection 
 
-            deckToAddTheCard.Cards.Add(card); // adding to only one deck
-            DecksStorage.Instance.SaveDecksIntoPlayerPrefs();
+        ShopManager.Instance.OpeningArea.NumberOfCardsOpenedFromPack++;
 
-            PackOpeningArea.Instance.Done();
+        deckToAddTheCard.Cards.Add(card); // adding to only one deck
+        DecksStorage.Instance.SaveDecksIntoPlayerPrefs();
+
+        PackOpeningArea.Instance.Done();
 
     }
     void OnMouseEnter()
