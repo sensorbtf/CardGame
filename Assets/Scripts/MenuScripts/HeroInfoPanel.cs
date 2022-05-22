@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class HeroInfoPanel : MonoBehaviour {
 
     public PlayerPortraitVisual portrait;
-    public Button PlayButton;
-    public Button BuildDeckButton;
+    //public Button PlayButton;
+    //public Button BuildDeckButton;
     public PortraitMenu selectedPortrait{ get; set;}
     public DeckIcon selectedDeck{ get; set;}
 
@@ -28,8 +28,8 @@ public class HeroInfoPanel : MonoBehaviour {
         {
             portrait.gameObject.SetActive(false);
             selectedPortrait = null;
-            if (BuildDeckButton!=null)
-                BuildDeckButton.interactable = false;
+            //if (BuildDeckButton!=null)
+            //    BuildDeckButton.interactable = false;
         }
         else
         {            
@@ -37,8 +37,8 @@ public class HeroInfoPanel : MonoBehaviour {
             portrait.ApplyLookFromAsset();
             portrait.gameObject.SetActive(true);
             selectedPortrait = menuPortrait;
-            if (BuildDeckButton!=null)
-                BuildDeckButton.interactable = true;
+            //if (BuildDeckButton!=null)
+            //    BuildDeckButton.interactable = true;
         }
     }
 
@@ -48,8 +48,8 @@ public class HeroInfoPanel : MonoBehaviour {
         {
             portrait.gameObject.SetActive(false);
             selectedDeck = null;
-            if (PlayButton!=null)
-                PlayButton.interactable = false;
+            //if (PlayButton!=null)
+            //    PlayButton.interactable = false;
         }
         else
         {

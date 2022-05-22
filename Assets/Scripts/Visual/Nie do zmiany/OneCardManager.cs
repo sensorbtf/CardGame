@@ -60,7 +60,7 @@ public class OneCardManager : MonoBehaviour
         else
         {
             //CardBodyImage.color = GlobalSettings.Instance.CardBodyStandardColor;
-            CardFaceFrameImage.color = Color.white;
+          //  CardFaceFrameImage.color = Color.white;
             //CardTopRibbonImage.color = GlobalSettings.Instance.CardRibbonsStandardColor;
             //CardLowRibbonImage.color = GlobalSettings.Instance.CardRibbonsStandardColor;
         }
