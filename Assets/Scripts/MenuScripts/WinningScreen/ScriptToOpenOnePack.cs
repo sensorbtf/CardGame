@@ -21,7 +21,7 @@ public class ScriptToOpenOnePack : MonoBehaviour {
         allowedToOpen = true;
         ShopManager.Instance.OpeningArea.AllowedToDragAPack = false;
         // Disable back button so that player can not exit the pack opening screen while he has not opened a pack
-        ShopManager.Instance.OpeningArea.BackButton.interactable = false;
+        ShopManager.Instance.OpeningArea.BackToMapButton.interactable = false;
         if (CursorOverPack())
             GlowImage.DOColor(GlowColor, 0.5f);
     }

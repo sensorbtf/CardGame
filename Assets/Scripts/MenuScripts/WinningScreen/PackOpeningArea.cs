@@ -10,8 +10,8 @@ public class PackOpeningArea : MonoBehaviour {
     public bool AllowedToDragAPack{ get; set;}
     public GameObject SpellCardFromPackPrefab;
     public GameObject CreatureCardFromPackPrefab;
-    public Button DoneButton;
-    public Button BackButton;
+    //public Button DoneButton;
+    public Button BackToMapButton;
     [Header("Probabilities")]
     [Range(0,1)]
     public float LegendaryProbability;
@@ -46,11 +46,11 @@ public class PackOpeningArea : MonoBehaviour {
             if (value == 1)
             {
                 // activate the Done button
-                DoneButton.gameObject.SetActive(true);
+                //DoneButton.gameObject.SetActive(true);
             }
             else
             {
-                DoneButton.gameObject.SetActive(false);
+               // DoneButton.gameObject.SetActive(false);
             }
         }
     }
@@ -167,6 +167,6 @@ public class PackOpeningArea : MonoBehaviour {
             CardsFromPackCreated.RemoveAt(0);
             Destroy(g);
         }
-        BackButton.interactable = true;
+        BackToMapButton.interactable = true;
     }
 }
