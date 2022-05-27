@@ -19,6 +19,8 @@ public class PackOpeningArea : MonoBehaviour {
     public float EpicProbability;
     [Range(0,1)]
     public float RareProbability;
+    [Range(0, 1)]
+    public float CreatureProbability;
     // these are the glow colors that will show while opening cards
     // or you can use colors from  RarityColors
     [Header ("Colors")]
@@ -26,6 +28,7 @@ public class PackOpeningArea : MonoBehaviour {
     public Color32 EpicColor;
     public Color32 RareColor;
     public Color32 CommonColor;
+    public Color32 CreatureColor;
 
     public Dictionary<RarityOptions, Color32> GlowColorsByRarity = new Dictionary<RarityOptions, Color32>();
 
@@ -66,6 +69,7 @@ public class PackOpeningArea : MonoBehaviour {
         GlowColorsByRarity.Add(RarityOptions.Rare, RareColor);
         GlowColorsByRarity.Add(RarityOptions.Epic, EpicColor);
         GlowColorsByRarity.Add(RarityOptions.Legendary, LegendaryColor);
+        GlowColorsByRarity.Add(RarityOptions.Creatures, CreatureColor);
 
     }
 
@@ -109,6 +113,11 @@ public class PackOpeningArea : MonoBehaviour {
             else if (prob < RareProbability)
             {
                 rarities[i] = RarityOptions.Rare;
+                AtLeastOneRareGiven = true;
+            }
+            else if (prob < CreatureProbability)
+            {
+                rarities[i] = RarityOptions.Creatures;
                 AtLeastOneRareGiven = true;
             }
             else

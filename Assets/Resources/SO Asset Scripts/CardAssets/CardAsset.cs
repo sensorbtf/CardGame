@@ -16,7 +16,7 @@ public enum TargetingOptions
 
 public enum RarityOptions
 {
-    Basic, Common, Rare, Epic, Legendary
+    Basic, Common, Rare, Epic, Legendary, Creatures
 }
 
 public enum TypesOfCards
