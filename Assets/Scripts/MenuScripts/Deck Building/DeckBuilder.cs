@@ -9,7 +9,7 @@ public class DeckBuilder : MonoBehaviour
     public Transform Content;
     public InputField DeckName;
 
-    public int SameCardLimit = 4;
+    public int SameCardLimit = 5;
     public int AmountOfCardsInDeck = 100000;
 
     public GameObject DeckCompleteFrame;

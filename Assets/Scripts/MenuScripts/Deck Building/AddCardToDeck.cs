@@ -90,7 +90,7 @@ public class AddCardToDeck : MonoBehaviour {
     {
         int quantity = CardCollection.Instance.QuantityOfEachCard[cardAsset];
 
-        if (DeckBuildingScreen.Instance.BuilderScript.InDeckBuildingMode && DeckBuildingScreen.Instance.ShowReducedQuantitiesInDeckBuilding)
+        if (DeckBuildingScreen.Instance.BuilderScript.InDeckBuildingMode)
             quantity -= DeckBuildingScreen.Instance.BuilderScript.NumberOfThisCardInDeck(cardAsset);
         
         QuantityText.text = "X" + quantity.ToString();

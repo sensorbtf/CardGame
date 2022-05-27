@@ -5,7 +5,7 @@ using System.Linq;
 
 public class CardCollection : MonoBehaviour 
 {
-    public int DefaultNumberOfBasicCards = 10; // how many cards of basic rarity should a character have by default;
+    public int DefaultNumberOfBasicCards = 4; // how many cards of basic rarity should a character have by default;
 
     public static CardCollection Instance;
     private Dictionary<string, CardAsset > AllCardsDictionary = new Dictionary<string, CardAsset>();

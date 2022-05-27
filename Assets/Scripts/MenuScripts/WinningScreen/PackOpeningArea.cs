@@ -137,12 +137,9 @@ public class PackOpeningArea : MonoBehaviour {
 
         return a;
     }
-
     public GameObject CardFromPack(RarityOptions rarity)
     {
         CardAsset a = ListOfRandomizedCards(rarity);
-
-        //CardCollection.Instance.QuantityOfEachCard[a]++;
 
         GameObject card;
         if (a.TypeOfCard == TypesOfCards.Creature)
