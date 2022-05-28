@@ -24,6 +24,31 @@ public class DeckBuildingScreen : MonoBehaviour
         HideScreen();
     }
 
+    public void EditDeck(DeckInfo savedDeckInfo)
+    {
+        // switch collection to editing mode, display the deck list on the right
+        // the easiest way is: 
+        // 0) hide screen
+        HideScreen();
+        // 1) make sure that it is for the same character and load the same deck name. 
+        BuilderScript.BuildADeckFor(savedDeckInfo.Character);
+        BuilderScript.DeckName.text = savedDeckInfo.DeckName;
+        // 2) populate it with the same cards that were in this deck.
+        foreach (CardAsset asset in savedDeckInfo.Cards)
+            BuilderScript.AddCard(asset);
+        // 3) delete the deck that we are editing from DecksStorage
+        DecksStorage.Instance.AllDecks.Remove(savedDeckInfo);
+        // 4) when we press "Done", this deck with changes will be added as a new deck
+
+        // apply character class and activate tab.
+        TabsScript.SetClassOnClassTab(savedDeckInfo.Character);
+        CollectionBrowserScript.ShowCollectionForDeckBuilding(savedDeckInfo.Character);
+        // TODO: save the index of this deck not to make it shift to the end of the list of decks and add it to the same place.
+
+        ShowScreenForDeckBuilding();
+    }
+
+
     public void ShowScreenForCollectionBrowsing()
     {
         ScreenContent.SetActive(true);
