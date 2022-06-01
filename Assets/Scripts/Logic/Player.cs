@@ -106,7 +106,6 @@ public class Player : MonoBehaviour, ICharacter
     public event VoidWithNoArguments EndTurnEvent;
 
 
-
     // ALL METHODS
     void Awake()
     {

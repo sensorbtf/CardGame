@@ -14,7 +14,7 @@ public class DiscardToDeckCommand : Command
     }
     public override void StartCommandExecution()
     {
-        p.PArea.PDiscard.DiscardToDeck(index); 
+       // p.PArea.PDiscard.DiscardToDeck(index); 
         p.PArea.PDiscard.CardsInDiscardPile--;
         p.PArea.PDeck.CardsInDeck++;
     }

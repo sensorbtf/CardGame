@@ -10,11 +10,20 @@ public class PlayerPortraitVisual : MonoBehaviour {
     //public Text NameText;
     public Text HealthText;
     [Header("Image References")]
-    public Image PortraitImage; 
+    public Image PortraitImage;
 
+    public Player playerScript;
+
+    public HealthBar healthBar;
+
+    void Start()
+    {
+        healthBar.SetMaxHealth(charAsset.MaxHealth);
+    }
+  
     void Awake()
 	{
-		if(charAsset != null)
+        if (charAsset != null)
 			ApplyLookFromAsset();
 	}
 
@@ -30,6 +39,8 @@ public class PlayerPortraitVisual : MonoBehaviour {
         {
             DamageEffect.CreateDamageEffect(transform.position, amount);
             HealthText.text = healthAfter.ToString();
+            healthBar.SetHealth(playerScript.Health); //
+            healthBar.SetHealth(healthAfter);  //////// Both arent working
         }
     }
 
