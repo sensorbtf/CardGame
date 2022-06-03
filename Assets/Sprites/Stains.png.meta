@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -472,6 +473,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Stains_2: 21300004
+      Stains_6: 21300012
+      Stains_4: 21300008
+      Stains_9: 21300018
+      Stains_10: 21300020
+      Stains_1: 21300002
+      Stains_0: 21300000
+      Stains_11: 21300022
+      Stains_7: 21300014
+      Stains_5: 21300010
+      Stains_8: 21300016
+      Stains_12: 21300024
+      Stains_15: 21300030
+      Stains_3: 21300006
+      Stains_13: 21300026
+      Stains_14: 21300028
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

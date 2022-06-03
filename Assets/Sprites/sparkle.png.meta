@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -472,6 +473,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      sparkle_29: 21300026
+      sparkle_14: 21300012
+      sparkle_7: 21300006
+      sparkle_13: 21300010
+      sparkle_5: 21300002
+      sparkle_31: 21300030
+      sparkle_12: 21300008
+      sparkle_28: 21300024
+      sparkle_22: 21300020
+      sparkle_15: 21300014
+      sparkle_20: 21300016
+      sparkle_21: 21300018
+      sparkle_4: 21300000
+      sparkle_6: 21300004
+      sparkle_23: 21300022
+      sparkle_30: 21300028
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
