@@ -12,6 +12,7 @@ public class OneCreatureManager : MonoBehaviour
     [Header("Image References")]
     public Image CreatureGraphicImage;
     public Image CreatureGlowImage;
+    public HealthBar healthBar;
 
     void Awake()
     {
@@ -43,6 +44,9 @@ public class OneCreatureManager : MonoBehaviour
         AttackText.text = cardAsset.Attack.ToString();
         HealthText.text = cardAsset.MaxHealth.ToString();
 
+        healthBar.SetMaxHealth(cardAsset.MaxHealth);
+
+
         if (PreviewManager != null)
         {
             PreviewManager.cardAsset = cardAsset;
@@ -56,6 +60,7 @@ public class OneCreatureManager : MonoBehaviour
         {
             DamageEffect.CreateDamageEffect(transform.position, amount);
             HealthText.text = healthAfter.ToString();
+            healthBar.SetHealth(healthAfter);  
         }
     }
 }

@@ -39,8 +39,6 @@ public class PlayerPortraitVisual : MonoBehaviour {
         {
             DamageEffect.CreateDamageEffect(transform.position, amount);
             HealthText.text = healthAfter.ToString();
-            healthBar.SetHealth(playerScript.Health); //
-            healthBar.SetHealth(healthAfter);  //////// Both arent working
         }
     }
 

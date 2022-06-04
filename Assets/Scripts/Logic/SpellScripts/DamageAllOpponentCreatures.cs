@@ -17,6 +17,9 @@ public class DamageAllOpponentCreatures : SpellEffect
 
         // deal damage to creatures only after making a command to prevent a situation: die first - deal damage after
         foreach (CreatureLogic cl in CreaturesToDamage)
+        {
             cl.Health -= specialAmount;
+        }
+            
     }
 }
