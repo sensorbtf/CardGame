@@ -40,7 +40,8 @@ public class MapLevel : MonoBehaviour
             }
         }
         IterateCurrentCounter();
-        Debug.Log("COUNTER" + currentLevelCounter);
+        //SaveCurrentLevelCounter();
+        Debug.Log("Level:" + currentLevelCounter);
     }
     public void IterateCurrentCounter()
     {
@@ -53,6 +54,24 @@ public class MapLevel : MonoBehaviour
 
     void Awake()
     {
+        // LoadCurrentLevelCounter();
         SetLevelActive();
     }
+
+    //public void SaveCurrentLevelCounter()
+    //{
+    //    PlayerPrefs.SetInt("currentLevelCounter", currentLevelCounter);
+    //}
+    //public void LoadCurrentLevelCounter()
+    //{
+    //    if (PlayerPrefs.HasKey("currentLevelCounter"))
+    //        currentLevelCounter = PlayerPrefs.GetInt("currentLevelCounter");
+    //    else
+    //        currentLevelCounter = 0;  
+    //}
+
+    //void OnApplicationQuit()
+    //{
+    //    SaveCurrentLevelCounter();
+    //}
 }
