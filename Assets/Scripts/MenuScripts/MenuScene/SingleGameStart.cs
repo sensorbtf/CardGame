@@ -4,18 +4,21 @@ using UnityEngine;
 
 public enum MenuState
 {
-    MapScreen, FireplaceScreen, ShopScreen
+    MapScreen, FireplaceScreen, ShopScreen, StartMenuScreen
 }
 public class SingleGameStart : MonoBehaviour 
 {
     public GameObject mapScreen;
     public GameObject fireplace;
     public GameObject shopScreen;
+    public GameObject startMenuScreen;
 
     public static MenuState TargetState = MenuState.MapScreen;
 
-    public DeckSelectionScreen deckScreenContent;
+    public MapScreen deckScreenContent;
     public ShopManager shopScreenContent;
+
+
 
     private void Awake()
     {
@@ -34,9 +37,10 @@ public class SingleGameStart : MonoBehaviour
                 shopScreen.SetActive(true);
                 shopScreenContent.ShowScreen();
                 break;
-            //case MenuState.PackOpeningArea:
-            //    shopScreen.SetActive(true);    <------------ po wygranej grze do "sklepu", gdzie wybierze siê 1 z 5 kart do kolekcji. Ogarn¹æ to w formie nie monet,
-            //    a za darmo 1 pakiet + ew. za z³oto bardzo rzadko gromadzone
+            case MenuState.StartMenuScreen:
+                startMenuScreen.SetActive(true);
+                shopScreenContent.ShowScreen();
+                break;
             //pozostaje te¿ kwestia ogarniêcia, co stanie siê tworzeniem kart - zamiana py³u na ksiê¿ycowe fragmenty do tworzenia legendarnych kart?
             //    break;
             default:

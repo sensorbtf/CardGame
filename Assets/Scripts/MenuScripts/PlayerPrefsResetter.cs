@@ -8,9 +8,13 @@ public class PlayerPrefsResetter : MonoBehaviour {
     // after one use, uncheck this checkmark in the inspector.
     public bool DeleteAllFromPlayerPrefs = false;
 
-	// Use this for initialization
-	void Awake () 
+
+    public static PlayerPrefsResetter Instance;
+
+    // Use this for initialization
+    void Awake () 
     {
+        Instance = this;
         if (DeleteAllFromPlayerPrefs)
         {
             PlayerPrefs.DeleteAll();

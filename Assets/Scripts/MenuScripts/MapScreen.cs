@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeckSelectionScreen : MonoBehaviour {
+public class MapScreen : MonoBehaviour {
 
     public GameObject ScreenContent;
     public DeckIcon[] DeckIcons;
     public HeroInfoPanel HeroPanelDeckSelection;
 
-    public static DeckSelectionScreen Instance;
+    public static MapScreen Instance;
 
     void Awake()
     {

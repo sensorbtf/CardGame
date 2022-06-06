@@ -22,6 +22,13 @@ public class SceneReloader: MonoBehaviour {
         SingleGameStart.TargetState = MenuState.ShopScreen;
         SceneManager.LoadScene("GameStartScreen");
     }
+    public void AfterLosingGame()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.LogWarning("PlayerPrefs reseted after losing");
+        SingleGameStart.TargetState = MenuState.StartMenuScreen;
+        SceneManager.LoadScene("MainMenuScreen");
+    }
 
     public void LoadScene(string SceneName)
     {

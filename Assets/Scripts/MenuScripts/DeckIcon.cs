@@ -40,7 +40,7 @@ public class DeckIcon : MonoBehaviour
             // zoom in on the deck only if it is complete
             transform.DOScale(TargetScale, 0.5f);
 
-            DeckSelectionScreen.Instance.HeroPanelDeckSelection.SelectDeck(this);
+            MapScreen.Instance.HeroPanelDeckSelection.SelectDeck(this);
             // deselect all the other Portrait Menu buttons 
             DeckIcon[] allPortraitButtons = GameObject.FindObjectsOfType<DeckIcon>();
             foreach (DeckIcon m in allPortraitButtons)
@@ -50,7 +50,7 @@ public class DeckIcon : MonoBehaviour
         else
         {
             Deselect();
-            DeckSelectionScreen.Instance.HeroPanelDeckSelection.SelectDeck(null);
+            MapScreen.Instance.HeroPanelDeckSelection.SelectDeck(null);
         }
     }
 
