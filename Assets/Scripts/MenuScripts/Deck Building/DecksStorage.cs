@@ -19,7 +19,6 @@ public class DeckInfo
     }
 
 
-
     public int NumberOfThisCardInDeck (CardAsset asset)
     {
         int count = 0;
@@ -37,7 +36,11 @@ public class DecksStorage : MonoBehaviour {
     public static DecksStorage Instance;
     public List<DeckInfo> AllDecks { get; set;}
 
+    [NonReorderable] // repairs error with overlaping
     public List<DeckInfo> defaultDecks; // default decks list
+
+    [NonReorderable]
+    public List<DeckInfo> enemyDecks;
 
     private bool alreadyLoadedDecks = false;
 

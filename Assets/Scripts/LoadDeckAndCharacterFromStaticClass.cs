@@ -14,6 +14,5 @@ public class LoadDeckAndCharacterFromStaticClass : MonoBehaviour {
             if (BattleStartInfo.SelectedDeck.Cards!=null)
                 p.deck.cards = new List<CardAsset>(BattleStartInfo.SelectedDeck.Cards);
         }       
-
     }
 }

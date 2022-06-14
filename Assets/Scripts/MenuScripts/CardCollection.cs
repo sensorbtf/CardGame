@@ -29,42 +29,7 @@ public class CardCollection : MonoBehaviour
         LoadQuantityOfCardsFromPlayerPrefs();
     }
 
-    void OnDestroy()
-    {
-        SaveQuantityOfCardsIntoPlayerPrefs();
-    }
 
-    private void LoadQuantityOfCardsFromPlayerPrefs()
-    {
-        // TODO: load only cards from the non-basic set. Basic set should always have quantities set to some standard number, not disenchantable 
-
-        foreach (CardAsset ca in allCardsArray)
-        {
-            // quantity of basic cards should not be affected:
-            if(ca.Rarity == RarityOptions.Basic)
-                QuantityOfEachCard.Add(ca, DefaultNumberOfBasicCards);            
-            else if (PlayerPrefs.HasKey("NumberOf" + ca.name))
-                QuantityOfEachCard.Add(ca, PlayerPrefs.GetInt("NumberOf" + ca.name));
-            else
-                QuantityOfEachCard.Add(ca, 0);
-        }
-    }
-
-    private void SaveQuantityOfCardsIntoPlayerPrefs()
-    {
-        foreach (CardAsset ca in allCardsArray)
-        {
-            if (ca.Rarity == RarityOptions.Basic)
-                PlayerPrefs.SetInt("NumberOf" + ca.name, DefaultNumberOfBasicCards);
-            else
-                PlayerPrefs.SetInt("NumberOf" + ca.name, QuantityOfEachCard[ca]);
-        }
-    }
-
-    void OnApplicationQuit()
-    {
-        SaveQuantityOfCardsIntoPlayerPrefs();
-    }
 
     public CardAsset GetCardAssetByName(string name)
     {        
@@ -117,4 +82,41 @@ public class CardCollection : MonoBehaviour
 
         return returnList;
     }
+    void OnDestroy()
+    {
+        SaveQuantityOfCardsIntoPlayerPrefs();
+    }
+
+    private void LoadQuantityOfCardsFromPlayerPrefs()
+    {
+        // TODO: load only cards from the non-basic set. Basic set should always have quantities set to some standard number, not disenchantable 
+
+        foreach (CardAsset ca in allCardsArray)
+        {
+            // quantity of basic cards should not be affected:
+            if (ca.Rarity == RarityOptions.Basic)
+                QuantityOfEachCard.Add(ca, DefaultNumberOfBasicCards);
+            else if (PlayerPrefs.HasKey("NumberOf" + ca.name))
+                QuantityOfEachCard.Add(ca, PlayerPrefs.GetInt("NumberOf" + ca.name));
+            else
+                QuantityOfEachCard.Add(ca, 0);
+        }
+    }
+
+    private void SaveQuantityOfCardsIntoPlayerPrefs()
+    {
+        foreach (CardAsset ca in allCardsArray)
+        {
+            if (ca.Rarity == RarityOptions.Basic)
+                PlayerPrefs.SetInt("NumberOf" + ca.name, DefaultNumberOfBasicCards);
+            else
+                PlayerPrefs.SetInt("NumberOf" + ca.name, QuantityOfEachCard[ca]);
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveQuantityOfCardsIntoPlayerPrefs();
+    }
+
 }
