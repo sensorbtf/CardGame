@@ -12,25 +12,26 @@ public class CardCollection : MonoBehaviour
 
     public Dictionary<CardAsset, int> QuantityOfEachCard = new Dictionary<CardAsset, int>();
 
-    private CardAsset[] allCardsArray;
-
+    public CardAsset[] allCardsArray;
+    public CardAsset[] allCreaturesCardsArray;
+    public CardAsset[] allBossCreaturesCardsArray;
     void Awake()
     {
         Instance = this;
 
         allCardsArray = Resources.LoadAll<CardAsset>("");
-        //Debug.Log(allCardsArray.Length);
+        allCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Creatures");
+        allBossCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Creatures/Boss Creatures");
+
+        Debug.Log("All cards: " + allCardsArray.Length + "Creature cards: " + allCreaturesCardsArray.Length + "Boss cards: " + allBossCreaturesCardsArray.Length);
+
         foreach (CardAsset ca in allCardsArray)
         {
             if (!AllCardsDictionary.ContainsKey(ca.name))
                 AllCardsDictionary.Add(ca.name, ca);
         }      
-
         LoadQuantityOfCardsFromPlayerPrefs();
     }
-
-
-
     public CardAsset GetCardAssetByName(string name)
     {        
         if (AllCardsDictionary.ContainsKey(name))  // if there is a card with this name, return its CardAsset
@@ -48,6 +49,7 @@ public class CardCollection : MonoBehaviour
     {
         return GetCards(true, false, true, rarity);
     }
+
 
     /// the most general method that will use multiple filters
     public List<CardAsset> GetCards(bool showingCardsPlayerDoesNotOwn = false, bool includeAllRarities = true, bool includeAllCharacters = true, RarityOptions rarity = RarityOptions.Basic,
@@ -82,10 +84,6 @@ public class CardCollection : MonoBehaviour
 
         return returnList;
     }
-    void OnDestroy()
-    {
-        SaveQuantityOfCardsIntoPlayerPrefs();
-    }
 
     private void LoadQuantityOfCardsFromPlayerPrefs()
     {
@@ -118,5 +116,8 @@ public class CardCollection : MonoBehaviour
     {
         SaveQuantityOfCardsIntoPlayerPrefs();
     }
-
+    void OnDestroy()
+    {
+        SaveQuantityOfCardsIntoPlayerPrefs();
+    }
 }

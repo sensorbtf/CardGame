@@ -11,6 +11,8 @@ public class MapScreen : MonoBehaviour {
 
     public static MapScreen Instance;
 
+    public bool choiceOfEnemy; // selecting boss/normal
+
     void Awake()
     {
         Instance = this;
@@ -40,13 +42,11 @@ public class MapScreen : MonoBehaviour {
             DeckIcons[i].gameObject.SetActive(true);
         }
     }
-
     public void ShowScreen()
     {
         ScreenContent.SetActive(true);
         HeroPanelDeckSelection.OnOpen();
     }
-
     public void HideScreen()
     {
         ScreenContent.SetActive(false);
@@ -57,7 +57,14 @@ public class MapScreen : MonoBehaviour {
     }
     public void SelectEnemyDeck()
     {
+        choiceOfEnemy = false; Debug.LogWarning("Choice of normal: " + choiceOfEnemy);
         BattleStartInfo.EnemyDeck = DecksStorage.Instance.enemyDecks[0];
+    }
+    public void SelectBossEnemyDeck()
+    {
+        choiceOfEnemy = true; Debug.LogWarning("Choice of Boss: " + choiceOfEnemy);
+
+        BattleStartInfo.BossEnemyDeck = DecksStorage.Instance.bossEnemyDecks[0];
     }
     public void SelectDeckForEditing()
     {

@@ -8,7 +8,6 @@ public class DeckInfo
     public string DeckName;
     public CharacterAsset Character;
     public List<CardAsset> Cards;
-
     
     public DeckInfo(List<CardAsset> cards, string deckName, CharacterAsset charAsset)
     {
@@ -17,7 +16,6 @@ public class DeckInfo
         Character = charAsset;
         DeckName = deckName;
     }
-
 
     public int NumberOfThisCardInDeck (CardAsset asset)
     {
@@ -40,7 +38,10 @@ public class DecksStorage : MonoBehaviour {
     public List<DeckInfo> defaultDecks; // default decks list
 
     [NonReorderable]
-    public List<DeckInfo> enemyDecks;
+    public List<DeckInfo> enemyDecks; //default enemy list
+
+    [NonReorderable]
+    public List<DeckInfo> bossEnemyDecks; //default bossEnemy list
 
     private bool alreadyLoadedDecks = false;
 
@@ -96,9 +97,7 @@ public class DecksStorage : MonoBehaviour {
             //Debug.LogWarning("Default deck loaded");
             }
         AllDecks = DecksFound;
-
     }
-
     public void SaveDecksIntoPlayerPrefs()
     {
         // clear all the keys of characters and deck names
@@ -135,7 +134,6 @@ public class DecksStorage : MonoBehaviour {
             PlayerPrefs.SetString(characterKey, AllDecks[i].Character.name);
         }
     }
-
     void OnApplicationQuit()
     {
         SaveDecksIntoPlayerPrefs();    

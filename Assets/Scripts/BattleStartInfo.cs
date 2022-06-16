@@ -7,4 +7,5 @@ public static class BattleStartInfo
     public static DeckInfo SelectedDeck;
 
     public static DeckInfo EnemyDeck;
+    public static DeckInfo BossEnemyDeck;
 }
