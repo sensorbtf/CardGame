@@ -22,12 +22,12 @@ public class SceneReloader: MonoBehaviour {
     public void StartGame()
     {
         SingleGameStart.TargetState = MenuState.MapScreen;
-        SceneManager.LoadScene("GameStartScreen");
+        SceneManager.LoadScene("MapScene");
     }
     public void AfterWinningGame()
     {
         SingleGameStart.TargetState = MenuState.ShopScreen;
-        SceneManager.LoadScene("GameStartScreen");
+        SceneManager.LoadScene("ShopScene");
     }
     public void AfterLosingGame()
     {

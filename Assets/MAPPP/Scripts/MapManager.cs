@@ -11,6 +11,8 @@ namespace Map
 
         public Map CurrentMap { get; private set; }
 
+        public static MapManager Instance;
+
         private void Start()
         {
             if (PlayerPrefs.HasKey("Map"))
@@ -35,7 +37,10 @@ namespace Map
                 GenerateNewMap();
             }
         }
-
+        private void Awake()
+        {
+             Instance = this;
+        }
         public void GenerateNewMap()
         {
             var map = MapGenerator.GetMap(config);

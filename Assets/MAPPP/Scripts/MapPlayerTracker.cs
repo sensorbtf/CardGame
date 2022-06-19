@@ -75,16 +75,25 @@ namespace Map
                     SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.EliteEnemy:
+                    MapScreen.Instance.SelectDeck();
+                    MapScreen.Instance.SelectBossEnemyDeck();
+                    SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.RestSite:
+                    MapScreen.Instance.SelectDeckForEditing();
+                    MapScreen.Instance.HideScreen();
                     break;
                 case NodeType.Treasure:
                     break;
                 case NodeType.Store:
+
                     break;
                 case NodeType.Boss:
+
+
                     break;
                 case NodeType.Mystery:
+
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
