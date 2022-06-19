@@ -139,5 +139,4 @@ public class ShopManager : MonoBehaviour {
         ScreenContent.SetActive(false);
         MoneyHUD.SetActive(false);
     }
-
 }

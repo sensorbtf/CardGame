@@ -36,11 +36,11 @@ public class MapScreen : MonoBehaviour {
             icon.InstantDeselect();
         }
 
-        for (int i = 0; i < DecksStorage.Instance.AllDecks.Count; i++)
-        {
-            DeckIcons[i].ApplyLookToIcon(DecksStorage.Instance.AllDecks[i]);
-            DeckIcons[i].gameObject.SetActive(true);
-        }
+        //for (int i = 0; i < DecksStorage.Instance.AllDecks.Count; i++)
+        //{
+        //    DeckIcons[i].ApplyLookToIcon(DecksStorage.Instance.AllDecks[i]);
+        //    DeckIcons[i].gameObject.SetActive(true);
+        //}
     }
     public void ShowScreen()
     {
@@ -53,7 +53,7 @@ public class MapScreen : MonoBehaviour {
     }
     public void SelectDeck()
     {
-        BattleStartInfo.SelectedDeck = DecksStorage.Instance.defaultDecks[0];
+        BattleStartInfo.SelectedDeck = DecksStorage.Instance.MainDeck[0];
     }
     public void SelectEnemyDeck()
     {
@@ -68,6 +68,7 @@ public class MapScreen : MonoBehaviour {
     }
     public void SelectDeckForEditing()
     {
-        DeckBuildingScreen.Instance.EditDeck(DecksStorage.Instance.defaultDecks[0]);
+        Debug.LogWarning("Deck for editing selected" + DecksStorage.Instance.MainDeck.Count);
+        DeckBuildingScreen.Instance.EditDeck(DecksStorage.Instance.MainDeck[0]);
     }
 }
