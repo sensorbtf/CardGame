@@ -4,6 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneReloader: MonoBehaviour {
 
+    public static SceneReloader Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public static void ReloadScene()
     {
         IDFactory.ResetIDs();
@@ -35,18 +42,16 @@ public class SceneReloader: MonoBehaviour {
         SceneManager.LoadScene(SceneName);
     }
 
-    //Random Scene Have to have proper indexation
-
     public void LoadRandomFightScene()
     {
         int index = Random.Range(1, 2);
         SceneManager.LoadScene(index);
     }
-    public void LoadRandomBossFightScene()
-    {
-        int index = Random.Range(2, 3);
-        SceneManager.LoadScene(index);
-    }
+    //public void LoadRandomBossFightScene()
+    //{
+    //    int index = Random.Range(2, 3);
+    //    SceneManager.LoadScene(index);
+    //}
     public void Quit()
     {
         Application.Quit();
