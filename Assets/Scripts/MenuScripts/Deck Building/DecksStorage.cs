@@ -36,10 +36,15 @@ public class DecksStorage : MonoBehaviour {
 
     public static DecksStorage Instance;
     public List<DeckInfo> AllDecks { get; set;}
-    [NonReorderable]
+
+    [NonReorderable] // repairs error with overlaping
     public List<DeckInfo> defaultDecks; // default decks list
 
-    private bool alreadyLoadedDecks = false;
+    [NonReorderable]
+    public List<DeckInfo> enemyDecks; //default enemy list
+
+    [NonReorderable]
+    public List<DeckInfo> bossEnemyDecks; //default bossEnemy list    private bool alreadyLoadedDecks = false;
 
     void Awake()
     {
