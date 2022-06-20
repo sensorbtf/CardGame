@@ -18,7 +18,7 @@ public class LoadEnemyDeckAndCharacter : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("LOADEDBOSS");
+            Debug.LogWarning("LOADEDSupreme");
             if (BattleStartInfo.BossEnemyDeck.Character != null)
                 p.charAsset = BattleStartInfo.BossEnemyDeck.Character;
             if (BattleStartInfo.BossEnemyDeck.Cards != null)

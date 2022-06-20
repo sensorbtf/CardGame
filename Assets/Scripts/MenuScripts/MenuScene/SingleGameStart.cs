@@ -18,8 +18,6 @@ public class SingleGameStart : MonoBehaviour
     public MapScreen deckScreenContent;
     public ShopManager shopScreenContent;
 
-
-
     private void Awake()
     {
         fireplace.SetActive(false);
