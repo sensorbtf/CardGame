@@ -35,7 +35,7 @@ public class DecksStorage : MonoBehaviour {
     public List<DeckInfo> AllDecks { get; set;}
 
     [NonReorderable] // repairs error with overlaping
-    public List<DeckInfo> MainDeck; // default decks list
+    public List<DeckInfo> defaultDecks; // default decks list
 
     [NonReorderable]
     public List<DeckInfo> enemyDecks; //default enemy list
@@ -93,7 +93,7 @@ public class DecksStorage : MonoBehaviour {
         }
             if (DecksFound.Count == 0)
             {
-                DecksFound = new List<DeckInfo>(MainDeck);
+                DecksFound = new List<DeckInfo>(defaultDecks);
             //Debug.LogWarning("Default deck loaded");
             }
         AllDecks = DecksFound;

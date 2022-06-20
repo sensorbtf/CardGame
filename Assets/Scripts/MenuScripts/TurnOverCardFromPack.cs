@@ -25,15 +25,13 @@ public class TurnOverCardFromPack : MonoBehaviour {
         var card = manager.cardAsset;
         var deckToAddTheCard = DecksStorage.Instance.AllDecks[0]; // selecting first deck
 
-        Debug.LogWarning("Default deck chosen");
-
         transform.DOScale(InitialScale * scaleFactor, 0.5f);
 
         CardCollection.Instance.QuantityOfEachCard[card]++; // adding to collection 
 
         ShopManager.Instance.OpeningArea.NumberOfCardsOpenedFromPack++;
 
-        //deckToAddTheCard.Cards.Add(card); // adding to only one deck
+        deckToAddTheCard.Cards.Add(card); // adding to only one deck
         DecksStorage.Instance.SaveDecksIntoPlayerPrefs();
 
         PackOpeningArea.Instance.Done();
