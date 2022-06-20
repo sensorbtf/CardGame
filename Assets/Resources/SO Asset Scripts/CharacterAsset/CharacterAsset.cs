@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum CharClass{NormalEnemyV1, BossEnemyV1, Bras}
+public enum CharClass{NormalEnemy, EliteEnemy, BossEnemy, Bras}
 
 public class CharacterAsset : ScriptableObject 
 {

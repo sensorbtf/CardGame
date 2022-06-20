@@ -28,6 +28,7 @@ public class ShopManager : MonoBehaviour {
     public int PacksCreated { get; set;}
     private float packPlacementOffset = -0.01f;
 
+    public bool isGettingPack = false;
     void Awake()
     {
         Instance = this;
@@ -35,11 +36,13 @@ public class ShopManager : MonoBehaviour {
 
         if (PlayerPrefs.HasKey("UnopenedPacks"))
         {
-           // Debug.Log("UnopenedPacks: " + PlayerPrefs.GetInt("UnopenedPacks"));
+            // Debug.Log("UnopenedPacks: " + PlayerPrefs.GetInt("UnopenedPacks"));
             StartCoroutine(GivePacks(PlayerPrefs.GetInt("UnopenedPacks"), true));
         }
-        GetPackForFree(); // do zmiany bo randomowo daje
         LoadDustAndMoneyToPlayerPrefs();
+
+        //if (isGettingPack == true)
+            GetPackForFree();
     }
 
     private int money; 

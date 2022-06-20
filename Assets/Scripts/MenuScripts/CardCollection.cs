@@ -14,16 +14,19 @@ public class CardCollection : MonoBehaviour
 
     public CardAsset[] allCardsArray;
     public CardAsset[] allCreaturesCardsArray;
+    public CardAsset[] allEliteCreaturesCardsArray;
     public CardAsset[] allBossCreaturesCardsArray;
     void Awake()
     {
         Instance = this;
 
-        allCardsArray = Resources.LoadAll<CardAsset>("");
-        allCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures");
+        allCardsArray = Resources.LoadAll<CardAsset>("SO Assets");
+        allCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures/Normal Creatures");
+        allEliteCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures/Elite Creatures");
         allBossCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures/Boss Creatures");
 
-        Debug.Log("All cards: " + allCardsArray.Length + "Creature cards: " + allCreaturesCardsArray.Length + "Boss cards: " + allBossCreaturesCardsArray.Length);
+        Debug.Log("All cards: " + allCardsArray.Length + " Creature cards: " + allCreaturesCardsArray.Length + 
+                " Elite Creature cards: " + allEliteCreaturesCardsArray.Length + " Boss cards: " + allBossCreaturesCardsArray.Length);
 
         foreach (CardAsset ca in allCardsArray)
         {

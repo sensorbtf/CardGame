@@ -76,7 +76,7 @@ namespace Map
                     break;
                 case NodeType.EliteEnemy:
                     MapScreen.Instance.SelectDeck();
-                    MapScreen.Instance.SelectBossEnemyDeck();
+                    MapScreen.Instance.SelectEliteEnemyDeck();
                     SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.RestSite:
@@ -89,17 +89,18 @@ namespace Map
 
                     break;
                 case NodeType.Boss:
-
-
+                    MapScreen.Instance.SelectDeck();
+                    MapScreen.Instance.SelectBossEnemyDeck();
+                    SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.Mystery:
-
+                    //randomize Store/Treasure/RestSite/Enemytypew/o Boss
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
-
         private void PlayWarningThatNodeCannotBeAccessed()
         {
             Debug.Log("Selected node cannot be accessed");

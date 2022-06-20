@@ -11,7 +11,7 @@ public class MapScreen : MonoBehaviour {
 
     public static MapScreen Instance;
 
-    public bool choiceOfEnemy; // selecting boss/normal
+    public int choiceOfEnemy; // selecting boss/normal
 
     void Awake()
     {
@@ -57,12 +57,18 @@ public class MapScreen : MonoBehaviour {
     }
     public void SelectEnemyDeck()
     {
-        choiceOfEnemy = false; Debug.LogWarning("Choice of normal: " + choiceOfEnemy);
+        choiceOfEnemy = 0; Debug.LogWarning("Choice of normal: " + choiceOfEnemy);
         BattleStartInfo.EnemyDeck = DecksStorage.Instance.enemyDecks[0];
+    }
+    public void SelectEliteEnemyDeck()
+    {
+        choiceOfEnemy = 1; Debug.LogWarning("Choice of Boss: " + choiceOfEnemy);
+
+        BattleStartInfo.EliteEnemyDeck = DecksStorage.Instance.eliteEnemyDecks[0];
     }
     public void SelectBossEnemyDeck()
     {
-        choiceOfEnemy = true; Debug.LogWarning("Choice of Boss: " + choiceOfEnemy);
+        choiceOfEnemy = 2; Debug.LogWarning("Choice of Boss: " + choiceOfEnemy);
 
         BattleStartInfo.BossEnemyDeck = DecksStorage.Instance.bossEnemyDecks[0];
     }

@@ -10,7 +10,6 @@ public class SceneReloader: MonoBehaviour {
     {
         Instance = this;
     }
-
     public static void ReloadScene()
     {
         IDFactory.ResetIDs();
@@ -26,8 +25,18 @@ public class SceneReloader: MonoBehaviour {
     }
     public void AfterWinningGame()
     {
-        SingleGameStart.TargetState = MenuState.ShopScreen;
-        SceneManager.LoadScene("MapScene");
+        int chanceForPack = Random.Range(1, 3);
+
+        if (chanceForPack == 1)
+        {
+            SingleGameStart.TargetState = MenuState.ShopScreen;
+            SceneManager.LoadScene("ShopScene");
+            ShopManager.Instance.isGettingPack = true;
+        }
+        else
+        {
+            StartGame();
+        }
     }
     public void AfterLosingGame()
     {
@@ -44,14 +53,12 @@ public class SceneReloader: MonoBehaviour {
 
     public void LoadRandomFightScene()
     {
-        int index = Random.Range(1, 2);
-        SceneManager.LoadScene(index);
+        SceneManager.LoadScene("FightScene");
     }
-    //public void LoadRandomBossFightScene()
-    //{
-    //    int index = Random.Range(2, 3);
-    //    SceneManager.LoadScene(index);
-    //}
+    public void LoadDeckBuildingScene()
+    {
+        SceneManager.LoadScene("DeckBuildingScene");
+    }
     public void Quit()
     {
         Application.Quit();

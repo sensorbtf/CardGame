@@ -70,9 +70,7 @@ public class PackOpeningArea : MonoBehaviour {
         GlowColorsByRarity.Add(RarityOptions.Epic, EpicColor);
         GlowColorsByRarity.Add(RarityOptions.Legendary, LegendaryColor);
         GlowColorsByRarity.Add(RarityOptions.Creatures, CreatureColor);
-
     }
-
     public bool CursorOverArea()
     {
         RaycastHit[] hits;
@@ -88,7 +86,6 @@ public class PackOpeningArea : MonoBehaviour {
         }
         return passedThroughTableCollider;
     }
-
     public void ShowPackOpening(Vector3 cardsInitialPosition)
     {      
         // ShopManager.Instance.PacksCreated--;
@@ -123,12 +120,10 @@ public class PackOpeningArea : MonoBehaviour {
             else
                 rarities[i] = RarityOptions.Common;
         }
-
         if (AtLeastOneRareGiven == false && giveAtLeastOneRare)
         {
             rarities[Random.Range(0, rarities.Length)] = RarityOptions.Rare;
         }
-
         for (int i = 0; i < rarities.Length; i++)
         {
             GameObject card = CardFromPack(rarities[i]);
@@ -160,6 +155,7 @@ public class PackOpeningArea : MonoBehaviour {
         OneCardManager manager = card.GetComponent<OneCardManager>();
         manager.cardAsset = a;
         manager.ReadCardFromAsset();
+
         return card;
     }
 
