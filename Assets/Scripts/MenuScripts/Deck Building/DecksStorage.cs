@@ -44,7 +44,10 @@ public class DecksStorage : MonoBehaviour {
     public List<DeckInfo> enemyDecks; //default enemy list
 
     [NonReorderable]
-    public List<DeckInfo> bossEnemyDecks; //default bossEnemy list    private bool alreadyLoadedDecks = false;
+    public List<DeckInfo> bossEnemyDecks; //default bossEnemy list
+    
+    private bool alreadyLoadedDecks = false;
+
 
     void Awake()
     {
