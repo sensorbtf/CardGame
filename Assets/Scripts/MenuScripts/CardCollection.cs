@@ -12,14 +12,19 @@ public class CardCollection : MonoBehaviour
 
     public Dictionary<CardAsset, int> QuantityOfEachCard = new Dictionary<CardAsset, int>();
 
-    private CardAsset[] allCardsArray;
-
+    public CardAsset[] allCardsArray;
+    public CardAsset[] allCreaturesCardsArray;
+    public CardAsset[] allBossCreaturesCardsArray;
     void Awake()
     {
         Instance = this;
 
         allCardsArray = Resources.LoadAll<CardAsset>("");
-        //Debug.Log(allCardsArray.Length);
+        allCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Creatures");
+        allBossCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Creatures/Boss Creatures");
+
+        Debug.Log("All cards: " + allCardsArray.Length + "Creature cards: " + allCreaturesCardsArray.Length + "Boss cards: " + allBossCreaturesCardsArray.Length);
+
         foreach (CardAsset ca in allCardsArray)
         {
             if (!AllCardsDictionary.ContainsKey(ca.name))
