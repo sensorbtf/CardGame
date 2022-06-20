@@ -53,7 +53,8 @@ public class MapScreen : MonoBehaviour {
     }
     public void SelectDeck()
     {
-        BattleStartInfo.SelectedDeck = DecksStorage.Instance.MainDeck[0];
+        Debug.LogWarning("Deck selected: " + DecksStorage.Instance.AllDecks.Count);
+        BattleStartInfo.SelectedDeck = DecksStorage.Instance.AllDecks[0];
     }
     public void SelectEnemyDeck()
     {
@@ -68,7 +69,7 @@ public class MapScreen : MonoBehaviour {
     }
     public void SelectDeckForEditing()
     {
-        Debug.LogWarning("Deck for editing selected" + DecksStorage.Instance.MainDeck.Count);
-        DeckBuildingScreen.Instance.EditDeck(DecksStorage.Instance.MainDeck[0]);
+        Debug.LogWarning("Deck for editing selected" + DecksStorage.Instance.AllDecks.Count);
+        DeckBuildingScreen.Instance.EditDeck(DecksStorage.Instance.AllDecks[0]);
     }
 }

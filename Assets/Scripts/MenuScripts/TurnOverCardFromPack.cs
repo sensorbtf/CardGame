@@ -23,7 +23,7 @@ public class TurnOverCardFromPack : MonoBehaviour {
     void OnMouseDown()
     {
         var card = manager.cardAsset;
-        var deckToAddTheCard = DecksStorage.Instance.MainDeck[0]; // selecting first deck
+        var deckToAddTheCard = DecksStorage.Instance.AllDecks[0]; // selecting first deck
 
         Debug.LogWarning("Default deck chosen");
 
