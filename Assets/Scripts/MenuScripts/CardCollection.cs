@@ -19,9 +19,9 @@ public class CardCollection : MonoBehaviour
     {
         Instance = this;
 
-        allCardsArray = Resources.LoadAll<CardAsset>("");
-        allCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Creatures");
-        allBossCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Creatures/Boss Creatures");
+        allCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards");
+        allCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures");
+        allBossCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures/Boss Creatures");
 
         Debug.Log("All cards: " + allCardsArray.Length + "Creature cards: " + allCreaturesCardsArray.Length + "Boss cards: " + allBossCreaturesCardsArray.Length);
 
