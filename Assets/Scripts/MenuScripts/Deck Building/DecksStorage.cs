@@ -36,7 +36,7 @@ public class DecksStorage : MonoBehaviour {
 
     public static DecksStorage Instance;
     public List<DeckInfo> AllDecks { get; set;}
-
+    [NonReorderable]
     public List<DeckInfo> defaultDecks; // default decks list
 
     private bool alreadyLoadedDecks = false;
