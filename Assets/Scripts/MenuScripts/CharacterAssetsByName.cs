@@ -11,7 +11,7 @@ public class CharacterAssetsByName : MonoBehaviour {
     void Awake()
     {
         Instance = this;
-        allCharacterAssets = Resources.LoadAll<CharacterAsset>("SO Assets/Characters");
+        allCharacterAssets = Resources.LoadAll<CharacterAsset>("");
 
         foreach (CharacterAsset ca in allCharacterAssets)
             if(!AllCharactersDictionary.ContainsKey(ca.name))

@@ -27,7 +27,7 @@ public class SceneReloader: MonoBehaviour {
     public void AfterWinningGame()
     {
         SingleGameStart.TargetState = MenuState.ShopScreen;
-        SceneManager.LoadScene("MapScene");
+        SceneManager.LoadScene("ShopScene");
     }
     public void AfterLosingGame()
     {
