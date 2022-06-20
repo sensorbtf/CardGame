@@ -53,10 +53,21 @@ public class MapScreen : MonoBehaviour {
     }
     public void SelectDeck()
     {
-        BattleStartInfo.SelectedDeck = DecksStorage.Instance.AllDecks[0];
+        BattleStartInfo.SelectedDeck = DecksStorage.Instance.AllDecks[0];//
     }
     public void SelectDeckForEditing()
     {
-        DeckBuildingScreen.Instance.EditDeck(DecksStorage.Instance.AllDecks[0]);
+        DeckBuildingScreen.Instance.EditDeck(DecksStorage.Instance.AllDecks[0]); //
+    }
+    public void SelectEnemyDeck()
+    {
+        choiceOfEnemy = false; Debug.LogWarning("Choice of normal: " + choiceOfEnemy);
+        BattleStartInfo.EnemyDeck = DecksStorage.Instance.enemyDecks[0];
+    }
+    public void SelectBossEnemyDeck()
+    {
+        choiceOfEnemy = true; Debug.LogWarning("Choice of Boss: " + choiceOfEnemy);
+
+        BattleStartInfo.BossEnemyDeck = DecksStorage.Instance.bossEnemyDecks[0];
     }
 }
