@@ -16,13 +16,21 @@ public class LoadEnemyDeckAndCharacter : MonoBehaviour
             if (BattleStartInfo.EnemyDeck.Cards != null)
                 p.deck.cards = RandomizeCardsInList(BattleStartInfo.EnemyDeck.Cards);
         }
-        else
+        else if (MapScreen.Instance.choiceOfEnemy == 1)
         {
-            Debug.LogWarning("LOADEDElite");
+            Debug.LogWarning("LOADED Elite");
             if (BattleStartInfo.EliteEnemyDeck.Character != null)
-                p.charAsset = BattleStartInfo.BossEnemyDeck.Character;
+                p.charAsset = BattleStartInfo.EliteEnemyDeck.Character;
             if (BattleStartInfo.EliteEnemyDeck.Cards != null)
                 p.deck.cards = RandomizeCardsInList(BattleStartInfo.EliteEnemyDeck.Cards);
+        }
+        else
+        {
+            Debug.LogWarning("LOADED BOSS");
+            if (BattleStartInfo.BossEnemyDeck.Character != null)
+                p.charAsset = BattleStartInfo.BossEnemyDeck.Character;
+            if (BattleStartInfo.BossEnemyDeck.Cards != null)
+                p.deck.cards = RandomizeCardsInList(BattleStartInfo.BossEnemyDeck.Cards);
         }
     }
     public List<CardAsset> RandomizeCardsInList(List<CardAsset> inputList)

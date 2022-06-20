@@ -41,8 +41,11 @@ public class ShopManager : MonoBehaviour {
         }
         LoadDustAndMoneyToPlayerPrefs();
 
-        //if (isGettingPack == true)
+        if (isGettingPack == true)
+        {
             GetPackForFree();
+            isGettingPack = false;
+        }
     }
 
     private int money; 
