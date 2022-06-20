@@ -17,6 +17,7 @@ public class SingleGameStart : MonoBehaviour
 
     public MapScreen deckScreenContent;
     public ShopManager shopScreenContent;
+    public DeckBuildingScreen deckBuildingScreenContent;
 
     private void Awake()
     {
@@ -38,6 +39,10 @@ public class SingleGameStart : MonoBehaviour
             case MenuState.StartMenuScreen:
                 startMenuScreen.SetActive(true);
                 shopScreenContent.ShowScreen();
+                break;
+            case MenuState.FireplaceScreen:
+                fireplace.SetActive(true);
+                deckBuildingScreenContent.ShowScreenForDeckBuilding();
                 break;
             //pozostaje te¿ kwestia ogarniêcia, co stanie siê tworzeniem kart - zamiana py³u na ksiê¿ycowe fragmenty do tworzenia legendarnych kart?
             //    break;

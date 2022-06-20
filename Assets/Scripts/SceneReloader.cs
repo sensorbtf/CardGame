@@ -29,8 +29,8 @@ public class SceneReloader: MonoBehaviour {
 
         if (chanceForPack == 1)
         {
-            SingleGameStart.TargetState = MenuState.ShopScreen;
             SceneManager.LoadScene("ShopScene");
+            SingleGameStart.TargetState = MenuState.ShopScreen;
             ShopManager.Instance.isGettingPack = true;
         }
         else
@@ -50,7 +50,6 @@ public class SceneReloader: MonoBehaviour {
     {
         SceneManager.LoadScene(SceneName);
     }
-
     public void LoadRandomFightScene()
     {
         SceneManager.LoadScene("FightScene");
@@ -58,6 +57,12 @@ public class SceneReloader: MonoBehaviour {
     public void LoadDeckBuildingScene()
     {
         SceneManager.LoadScene("DeckBuildingScene");
+        SingleGameStart.TargetState = MenuState.FireplaceScreen;
+        MapScreen.Instance.SelectDeckForEditing();
+    }
+    public void ShowMapNodes()
+    {
+        OuterMapParentVisibility.Instance.ActivateMap();
     }
     public void Quit()
     {

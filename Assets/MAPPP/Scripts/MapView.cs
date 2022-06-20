@@ -127,6 +127,8 @@ namespace Map
             scrollNonUi.freezeY = orientation == MapOrientation.LeftToRight || orientation == MapOrientation.RightToLeft;
             var boxCollider = mapParent.AddComponent<BoxCollider>();
             boxCollider.size = new Vector3(100, 100, 1);
+
+            var showingMap = mapParent.AddComponent<OuterMapParentVisibility>();
         }
 
         private void CreateNodes(IEnumerable<Node> nodes)

@@ -82,6 +82,7 @@ namespace Map
                 case NodeType.RestSite:
                     MapScreen.Instance.SelectDeckForEditing();
                     MapScreen.Instance.HideScreen();
+                    OuterMapParentVisibility.Instance.DeActivateMap();
                     break;
                 case NodeType.Treasure:
                     break;
@@ -96,7 +97,6 @@ namespace Map
                 case NodeType.Mystery:
                     //randomize Store/Treasure/RestSite/Enemytypew/o Boss
                     break;
-
                 default:
                     throw new ArgumentOutOfRangeException();
             }

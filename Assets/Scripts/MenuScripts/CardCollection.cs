@@ -114,7 +114,6 @@ public class CardCollection : MonoBehaviour
                 PlayerPrefs.SetInt("NumberOf" + ca.name, QuantityOfEachCard[ca]);
         }
     }
-
     void OnApplicationQuit()
     {
         SaveQuantityOfCardsIntoPlayerPrefs();
