@@ -137,7 +137,6 @@ public class DeckBuilder : MonoBehaviour
         DecksStorage.Instance.SaveDecksIntoPlayerPrefs();
         // the screen with collection and pre-made decks is loaded by calling other methods on this button
         DeckBuildingScreen.Instance.ShowScreenForCollectionBrowsing();
-        Debug.LogWarning("Deck BUILDER: Decks Saved");
     }
 
     void OnApplicationQuit()

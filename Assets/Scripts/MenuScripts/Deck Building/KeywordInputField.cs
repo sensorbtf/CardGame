@@ -14,8 +14,8 @@ public class KeywordInputField : MonoBehaviour {
 
     public void Clear()
     {
-       // iField.text = "";
-        //DeckBuildingScreen.Instance.CollectionBrowserScript.Keyword = iField.text;
+        iField.text = "";
+        DeckBuildingScreen.Instance.CollectionBrowserScript.Keyword = iField.text;
     }
 
     public void EnterSubmit()
