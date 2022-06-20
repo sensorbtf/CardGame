@@ -53,7 +53,7 @@ public class MapScreen : MonoBehaviour {
     }
     public void SelectDeck()
     {
-        BattleStartInfo.SelectedDeck = DecksStorage.Instance.defaultDecks[0];
+        BattleStartInfo.SelectedDeck = DecksStorage.Instance.AllDecks[0];
     }
     public void SelectEnemyDeck()
     {
@@ -68,6 +68,6 @@ public class MapScreen : MonoBehaviour {
     }
     public void SelectDeckForEditing()
     {
-        DeckBuildingScreen.Instance.EditDeck(DecksStorage.Instance.defaultDecks[0]);
+        DeckBuildingScreen.Instance.EditDeck(DecksStorage.Instance.AllDecks[0]);
     }
 }
