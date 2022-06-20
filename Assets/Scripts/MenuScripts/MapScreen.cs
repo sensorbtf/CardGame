@@ -10,7 +10,7 @@ public class MapScreen : MonoBehaviour {
     public HeroInfoPanel HeroPanelDeckSelection;
 
     public static MapScreen Instance;
-
+    public bool choiceOfEnemy; // selecting boss/normal
     void Awake()
     {
         Instance = this;
