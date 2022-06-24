@@ -2,6 +2,7 @@
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Map
 {
@@ -87,7 +88,9 @@ namespace Map
                 case NodeType.Treasure:
                     break;
                 case NodeType.Store:
-
+                    SceneManager.LoadScene("ShopScene");
+                    //odblokować Back TO Menu
+                    SingleGameStart.TargetState = MenuState.ShopScreen;
                     break;
                 case NodeType.Boss:
                     MapScreen.Instance.SelectDeck();

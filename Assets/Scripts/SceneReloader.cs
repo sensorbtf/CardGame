@@ -6,6 +6,8 @@ public class SceneReloader: MonoBehaviour {
 
     public static SceneReloader Instance;
 
+    private int ChancesForPackManipulator = 5;
+
     private void Awake()
     {
         Instance = this;
@@ -25,16 +27,19 @@ public class SceneReloader: MonoBehaviour {
     }
     public void AfterWinningGame()
     {
-        int chanceForPack = Random.Range(1, 3);
+        int chanceForShop = Random.Range(0, ChancesForPackManipulator);
 
-        if (chanceForPack == 1)
+        if (chanceForShop == 0)
         {
+            ChancesForPackManipulator = 5;
+            ShopManager.isGettingPack = true;
+
             SceneManager.LoadScene("ShopScene");
             SingleGameStart.TargetState = MenuState.ShopScreen;
-            ShopManager.Instance.isGettingPack = true;
         }
         else
         {
+            ChancesForPackManipulator--;
             StartGame();
         }
     }

@@ -28,7 +28,7 @@ public class ShopManager : MonoBehaviour {
     public int PacksCreated { get; set;}
     private float packPlacementOffset = -0.01f;
 
-    public  bool isGettingPack;
+    static public bool isGettingPack;
     void Awake()
     {
         Instance = this;
@@ -41,11 +41,12 @@ public class ShopManager : MonoBehaviour {
         }
         LoadDustAndMoneyToPlayerPrefs();
 
-        //if (isGettingPack == true)
-        //{
+        if (isGettingPack == true)
+        {
+          // Debug.LogWarning("Giving Pack After Victory");
            GetPackForFree();
            isGettingPack = false;
-        //}
+        }
     }
 
     private int money; 
