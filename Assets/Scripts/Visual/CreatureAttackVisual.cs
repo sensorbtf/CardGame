@@ -36,7 +36,7 @@ public class CreatureAttackVisual : MonoBehaviour
                 {
                     // target is a player
                     target.GetComponent<PlayerPortraitVisual>().HealthText.text = targetHealthAfter.ToString();
-                   target.GetComponent<PlayerPortraitVisual>().healthBar.SetHealth(targetHealthAfter); 
+                    target.GetComponent<PlayerPortraitVisual>().healthBar.SetHealth(targetHealthAfter); 
                 }
                 //else
                 //    target.GetComponent<OneCreatureManager>().HealthText.text = targetHealthAfter.ToString();

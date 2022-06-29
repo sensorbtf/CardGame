@@ -82,7 +82,6 @@ public class Player : MonoBehaviour, ICharacter
                 HighlightPlayableCards();
         }
     }
-
     private int health;
     public int Health
     {
@@ -128,10 +127,10 @@ public class Player : MonoBehaviour, ICharacter
 
     public virtual void OnTurnStart()
     {
-      
-        // add one mana crystal to the pool;
+          // add one mana crystal to the pool;
         ManaLeft = ManaThisTurn;
         foreach (CreatureLogic cl in table.CreaturesOnTable)
+        
             cl.OnTurnStart();
     }
 
@@ -263,7 +262,6 @@ public class Player : MonoBehaviour, ICharacter
         hand.CardsInHand.Remove(playedCard);
         HighlightPlayableCards();
     }
-
     public void Victory()
     {
         PArea.ControlsON = false;
@@ -271,7 +269,6 @@ public class Player : MonoBehaviour, ICharacter
         TurnManager.Instance.StopTheTimer();
         new VictoryCommand(this).AddToQueue();
     }
-
     public void Die()
         {
             // game over
