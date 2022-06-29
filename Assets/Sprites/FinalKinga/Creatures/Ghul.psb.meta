@@ -111,7 +111,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -97, y: -310}
+    uvTransform: {x: -32, y: -310}
   characterData:
     bones: []
     parts: []
