@@ -14,8 +14,6 @@ namespace Map
         public MapView view;
 
         public static MapPlayerTracker Instance;
-
-
         public bool Locked { get; set; }
 
         private void Awake()

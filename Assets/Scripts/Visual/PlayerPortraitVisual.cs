@@ -6,22 +6,24 @@ using DG.Tweening;
 public class PlayerPortraitVisual : MonoBehaviour {
 
     public CharacterAsset charAsset;
-    [Header("Text Component References")]
-    //public Text NameText;
+
     public Text HealthText;
-    [Header("Image References")]
+    public Text CurrentHealthText;
+
     public Image PortraitImage;
 
     public Player playerScript;
 
     public HealthBar healthBar;
 
-    private int _currentHealth;
-
+    public int currentHealth;
     void Start()
     {
+        currentHealth = playerScript.CurrentHealth;
+
         healthBar.SetMaxHealth(charAsset.MaxHealth);
-        healthBar.SetHealth(charAsset.CurrentHealth);
+
+        healthBar.SetHealth(currentHealth);
     }
   
     void Awake()
@@ -32,7 +34,9 @@ public class PlayerPortraitVisual : MonoBehaviour {
 
 	public void ApplyLookFromAsset()
     {
-        HealthText.text = charAsset.CurrentHealth.ToString();
+        HealthText.text = charAsset.MaxHealth.ToString();
+        CurrentHealthText.text = playerScript.CurrentHealth.ToString();
+
         PortraitImage.sprite = charAsset.AvatarImage;
     }
 
@@ -43,7 +47,9 @@ public class PlayerPortraitVisual : MonoBehaviour {
             DamageEffect.CreateDamageEffect(transform.position, amount);
             HealthText.text = healthAfter.ToString();
             healthBar.SetHealth(healthAfter);
-            _currentHealth = healthAfter;
+
+            CurrentHealthText.text = healthAfter.ToString();
+            currentHealth = healthAfter;
         }
     }
 

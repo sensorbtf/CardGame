@@ -40,7 +40,6 @@ public class TurnManager : MonoBehaviour {
             }
             // remove highlights for opponent.
             whoseTurn.otherPlayer.HighlightPlayableCards(true);
-
         }
     }
 
@@ -49,7 +48,6 @@ public class TurnManager : MonoBehaviour {
     {
         Instance = this;
         timer = GetComponent<RopeTimer>();
-        
     }
 
     void Start()
@@ -63,6 +61,7 @@ public class TurnManager : MonoBehaviour {
         CreatureLogic.CreaturesCreatedThisGame.Clear();
         foreach (Player p in Player.Players)
         {
+            p.Health = 20;
             p.ManaThisTurn = 4;
             p.ManaLeft = 4;
             p.LoadCharacterInfoFromAsset();
@@ -84,7 +83,7 @@ public class TurnManager : MonoBehaviour {
                 Player whoGoesSecond = whoGoesFirst.otherPlayer;
          
                 // draw 5 cards
-                int initDraw = 5;
+                int initDraw = 3;
                 whoGoesSecond.DrawACard(true);
                 whoGoesFirst.DrawACard(true);
                 for (int i = 0; i < initDraw; i++)
@@ -96,10 +95,6 @@ public class TurnManager : MonoBehaviour {
                 }
                 new StartATurnCommand(whoGoesFirst).AddToQueue();
             });
-    }
-    void Update()
-    {
-
     }
     public void EndTurn()
     {

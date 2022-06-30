@@ -16,7 +16,6 @@ public class Player : MonoBehaviour, ICharacter
     public Hand hand;
     public Table table;
     public DiscardPile discardpile;
-    private PlayerDiscardPileVisual discardpileVisual;
 
     // a static array that will store both players, should always have 2 players
     public static Player[] Players;
@@ -82,16 +81,20 @@ public class Player : MonoBehaviour, ICharacter
                 HighlightPlayableCards();
         }
     }
+
+    public int CurrentHealth;
+
     private int health;
     public  int Health
     {
         get { return health;}
         set
         {
-            if (value > charAsset.CurrentHealth)
-                health = charAsset.CurrentHealth;
+            if (value > charAsset.MaxHealth)
+                health = charAsset.MaxHealth;
             else
                 health = value;
+
             if (value <= 0)
                 Die(); 
         }
@@ -127,7 +130,7 @@ public class Player : MonoBehaviour, ICharacter
 
     public virtual void OnTurnStart()
     {
-          // add one mana crystal to the pool;
+        // add one mana crystal to the pool;
         ManaLeft = ManaThisTurn;
         foreach (CreatureLogic cl in table.CreaturesOnTable)
         
@@ -264,8 +267,7 @@ public class Player : MonoBehaviour, ICharacter
     }
     public void Victory()
     {
-        charAsset.CurrentHealth = Health;
-
+        CurrentHealth = Health;
         PArea.ControlsON = false;
         otherPlayer.PArea.ControlsON = false;
         TurnManager.Instance.StopTheTimer();
@@ -302,7 +304,7 @@ public class Player : MonoBehaviour, ICharacter
     // START GAME METHODS
     public void LoadCharacterInfoFromAsset()
     {
-        Health = charAsset.CurrentHealth;
+        Health = charAsset.MaxHealth;
         // change the visuals for portrait, hero power, etc...
         PArea.Portrait.charAsset = charAsset;
         PArea.Portrait.ApplyLookFromAsset();
