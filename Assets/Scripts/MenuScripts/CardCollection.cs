@@ -13,7 +13,7 @@ public class CardCollection : MonoBehaviour
     public Dictionary<CardAsset, int> QuantityOfEachCard = new Dictionary<CardAsset, int>();
 
     public CardAsset[] allCardsArray;
-    public CardAsset[] allCreaturesCardsArray;
+    public CardAsset[] allNormalCreaturesCardsArray;
     public CardAsset[] allEliteCreaturesCardsArray;
     public CardAsset[] allBossCreaturesCardsArray;
     void Awake()
@@ -21,11 +21,11 @@ public class CardCollection : MonoBehaviour
         Instance = this;
 
         allCardsArray = Resources.LoadAll<CardAsset>("SO Assets");
-        allCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures/Normal Creatures");
+        allNormalCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures/Normal Creatures");
         allEliteCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures/Elite Creatures");
         allBossCreaturesCardsArray = Resources.LoadAll<CardAsset>("SO Assets/Cards/Creatures/Boss Creatures");
 
-        Debug.Log("All cards: " + allCardsArray.Length + " Creature cards: " + allCreaturesCardsArray.Length + 
+        Debug.Log("All cards: " + allCardsArray.Length + " Creature cards: " + allNormalCreaturesCardsArray.Length + 
                 " Elite Creature cards: " + allEliteCreaturesCardsArray.Length + " Boss cards: " + allBossCreaturesCardsArray.Length);
 
         foreach (CardAsset ca in allCardsArray)

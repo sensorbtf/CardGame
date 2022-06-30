@@ -16,9 +16,12 @@ public class PlayerPortraitVisual : MonoBehaviour {
 
     public HealthBar healthBar;
 
+    private int _currentHealth;
+
     void Start()
     {
         healthBar.SetMaxHealth(charAsset.MaxHealth);
+        healthBar.SetHealth(charAsset.CurrentHealth);
     }
   
     void Awake()
@@ -29,7 +32,7 @@ public class PlayerPortraitVisual : MonoBehaviour {
 
 	public void ApplyLookFromAsset()
     {
-        HealthText.text = charAsset.MaxHealth.ToString();
+        HealthText.text = charAsset.CurrentHealth.ToString();
         PortraitImage.sprite = charAsset.AvatarImage;
     }
 
@@ -40,6 +43,7 @@ public class PlayerPortraitVisual : MonoBehaviour {
             DamageEffect.CreateDamageEffect(transform.position, amount);
             HealthText.text = healthAfter.ToString();
             healthBar.SetHealth(healthAfter);
+            _currentHealth = healthAfter;
         }
     }
 

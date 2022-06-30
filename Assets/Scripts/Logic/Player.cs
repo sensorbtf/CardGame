@@ -83,13 +83,13 @@ public class Player : MonoBehaviour, ICharacter
         }
     }
     private int health;
-    public int Health
+    public  int Health
     {
         get { return health;}
         set
         {
-            if (value > charAsset.MaxHealth)
-                health = charAsset.MaxHealth;
+            if (value > charAsset.CurrentHealth)
+                health = charAsset.CurrentHealth;
             else
                 health = value;
             if (value <= 0)
@@ -264,6 +264,8 @@ public class Player : MonoBehaviour, ICharacter
     }
     public void Victory()
     {
+        charAsset.CurrentHealth = Health;
+
         PArea.ControlsON = false;
         otherPlayer.PArea.ControlsON = false;
         TurnManager.Instance.StopTheTimer();
@@ -300,7 +302,7 @@ public class Player : MonoBehaviour, ICharacter
     // START GAME METHODS
     public void LoadCharacterInfoFromAsset()
     {
-        Health = charAsset.MaxHealth;
+        Health = charAsset.CurrentHealth;
         // change the visuals for portrait, hero power, etc...
         PArea.Portrait.charAsset = charAsset;
         PArea.Portrait.ApplyLookFromAsset();

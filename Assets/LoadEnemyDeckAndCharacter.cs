@@ -37,6 +37,7 @@ public class LoadEnemyDeckAndCharacter : MonoBehaviour
     {
         var copy = new List<CardAsset>(inputList); // make a copy of the list:
         copy.Shuffle(); // shuffle the list so that we are always replacing different cards:
+
         if (MapScreen.Instance.choiceOfEnemy == 0)
         {
             for (var i = 0; i < 3; i++)
@@ -45,7 +46,7 @@ public class LoadEnemyDeckAndCharacter : MonoBehaviour
         else if (MapScreen.Instance.choiceOfEnemy == 1)
         {
                 for (var i = 0; i < 2; i++)
-                copy[0] = GetRandomCard(); // choosing only 2 cuz 2 card in list
+                copy[i] = GetRandomCard(); // choosing only 2 cuz 2 card in list
         }
         else if (MapScreen.Instance.choiceOfEnemy == 2)
         {
@@ -56,12 +57,14 @@ public class LoadEnemyDeckAndCharacter : MonoBehaviour
     public CardAsset GetRandomCard() 
     {
         if (MapScreen.Instance.choiceOfEnemy == 0)
-            return CardCollection.Instance.allCreaturesCardsArray[Random.Range(0, CardCollection.Instance.allCreaturesCardsArray.Length)];
+        {
+            return CardCollection.Instance.allNormalCreaturesCardsArray[Random.Range(0, CardCollection.Instance.allNormalCreaturesCardsArray.Length)];
+        }
         else if (MapScreen.Instance.choiceOfEnemy == 1)
         {
             return CardCollection.Instance.allEliteCreaturesCardsArray[Random.Range(0, CardCollection.Instance.allEliteCreaturesCardsArray.Length)];
         }
-        else 
+        else
         {
             return CardCollection.Instance.allBossCreaturesCardsArray[Random.Range(0, CardCollection.Instance.allBossCreaturesCardsArray.Length)];
         }
