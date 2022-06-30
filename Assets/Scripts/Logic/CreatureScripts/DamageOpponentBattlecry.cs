@@ -12,6 +12,6 @@ public class DamageOpponentBattlecry : CreatureEffect
     {
         new DealDamageCommand(new List<DamageCommandInfo>() { new DamageCommandInfo(owner.otherPlayer.ID, owner.otherPlayer.Health - specialAmount, specialAmount) }).AddToQueue();
         owner.otherPlayer.Health -= specialAmount;
-        owner.otherPlayer.GetComponent<PlayerPortraitVisual>().healthBar.SetHealth(specialAmount);
+       // owner.otherPlayer.GetComponent<PlayerPortraitVisual>().healthBar.SetHealth(owner.otherPlayer.Health); //ewentualnie połączyć jakoś z set health na liczbach
     }
 }

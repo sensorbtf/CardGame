@@ -39,6 +39,7 @@ public class PlayerPortraitVisual : MonoBehaviour {
         {
             DamageEffect.CreateDamageEffect(transform.position, amount);
             HealthText.text = healthAfter.ToString();
+            healthBar.SetHealth(healthAfter);
         }
     }
 
