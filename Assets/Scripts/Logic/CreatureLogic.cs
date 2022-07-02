@@ -47,7 +47,10 @@ public class CreatureLogic : ICharacter
             if (value > MaxHealth)
                 health = MaxHealth;
             else if (value <= 0)
+            {
+                owner.EvaluateWinCondition();
                 Die();
+            }  
             else
                 health = value;
         }

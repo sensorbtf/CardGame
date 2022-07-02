@@ -25,6 +25,8 @@ public class Player : MonoBehaviour, ICharacter
 
     // PROPERTIES 
     // this property is a part of interface ICharacter
+
+    public bool IsHuman => GetComponent<TurnMaker>() is PlayerTurnMaker;
     public int ID
     {
         get{ return PlayerID; }
@@ -82,21 +84,25 @@ public class Player : MonoBehaviour, ICharacter
         }
     }
 
-    public int CurrentHealth;
-
     private int health;
-    public  int Health
+    public int Health
     {
-        get { return health;}
+        get { return health; }
         set
         {
             if (value > charAsset.MaxHealth)
                 health = charAsset.MaxHealth;
             else
                 health = value;
-
             if (value <= 0)
-                Die(); 
+                Die();
+
+            if (IsHuman)
+            {
+               // Debug.LogWarning("Health Saved: " + health);
+                PlayerPrefs.SetInt("PlayerHealth", health);
+                PlayerPrefs.Save();
+            }
         }
     }
 
@@ -118,13 +124,15 @@ public class Player : MonoBehaviour, ICharacter
         PlayerID = IDFactory.GetUniqueID();
     }
 
-     void FixedUpdate()
+     public void EvaluateWinCondition()
     {
-        // if enemy have no cards = die
-        var cardsInHand = hand.CardsInHand.Count;
-        var cardsInDeck = deck.cards.Count;
-        var creaturesOnTable = table.CreaturesOnTable.Count;
-        if (cardsInHand <= 0 && cardsInDeck <= 0 && creaturesOnTable <= 0)
+        // if Player have no cards = die
+        var cardsInHand = otherPlayer.hand.CardsInHand.Count;
+        var cardsInDeck = otherPlayer.deck.cards.Count;
+        var creaturesOnTable = otherPlayer.table.CreaturesOnTable.Count;
+        var cardsInDiscardPile = otherPlayer.discardpile.discardedCards.Count;
+
+        if (cardsInHand <= 0 && cardsInDeck <= 0 && creaturesOnTable <= 0 && cardsInDiscardPile <= 0)
             Victory();
     }
 
@@ -218,7 +226,8 @@ public class Player : MonoBehaviour, ICharacter
         {
             // target is a creature
             PlayASpellFromHand(CardLogic.CardsCreatedThisGame[SpellCardUniqueID], CreatureLogic.CreaturesCreatedThisGame[TargetUniqueID]);
-        }      
+        }
+        EvaluateWinCondition();
     }
 
     // 2nd overload - takes CardLogic and ICharacter interface - 
@@ -239,6 +248,7 @@ public class Player : MonoBehaviour, ICharacter
         discardpile.discardedCards.Insert(0, playedCard);
         // remove this card from hand
         hand.CardsInHand.Remove(playedCard);
+        EvaluateWinCondition();
     }
 
     // METHODS TO PLAY CREATURES 
@@ -267,7 +277,6 @@ public class Player : MonoBehaviour, ICharacter
     }
     public void Victory()
     {
-        CurrentHealth = Health;
         PArea.ControlsON = false;
         otherPlayer.PArea.ControlsON = false;
         TurnManager.Instance.StopTheTimer();
@@ -302,12 +311,20 @@ public class Player : MonoBehaviour, ICharacter
         }   
     }
     // START GAME METHODS
-    public void LoadCharacterInfoFromAsset()
+    public void LoadCharacterInfoFromAsset() 
     {
-        Health = charAsset.MaxHealth;
-        // change the visuals for portrait, hero power, etc...
+        if (IsHuman)
+        {
+            var playerPrefsHealth = PlayerPrefs.HasKey("PlayerHealth") ? PlayerPrefs.GetInt("PlayerHealth") : 0;
+
+            Health = playerPrefsHealth == 0 ? charAsset.MaxHealth : playerPrefsHealth;
+            //Debug.LogWarning("Loaded Pref Health = " + Health);
+        }
+        else
+            Health = charAsset.MaxHealth;
+
         PArea.Portrait.charAsset = charAsset;
-        PArea.Portrait.ApplyLookFromAsset();
+        PArea.Portrait.ApplyLookFromAsset(Health);
     }
 
     public void TransmitInfoAboutPlayerToVisual()
@@ -324,7 +341,6 @@ public class Player : MonoBehaviour, ICharacter
             PArea.AllowedToControlThisPlayer = true;
         }
     }
-
     public void DiscardACardAtIndex(int index)
     {
         // check that there is a card with this index

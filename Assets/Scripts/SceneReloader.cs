@@ -48,7 +48,7 @@ public class SceneReloader: MonoBehaviour {
         PlayerPrefs.DeleteAll();
         Debug.LogWarning("PlayerPrefs reseted after losing");
         SingleGameStart.TargetState = MenuState.StartMenuScreen;
-        SceneManager.LoadScene("MainMenuScreen");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void LoadScene(string SceneName)
@@ -69,6 +69,7 @@ public class SceneReloader: MonoBehaviour {
     {
         OuterMapParentVisibility.Instance.ActivateMap();
     }
+
     public void Quit()
     {
         Application.Quit();

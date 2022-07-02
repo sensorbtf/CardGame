@@ -35,7 +35,7 @@ public class CreatureAttackVisual : MonoBehaviour
                 if (targetUniqueID == GlobalSettings.Instance.LowPlayer.PlayerID || targetUniqueID == GlobalSettings.Instance.TopPlayer.PlayerID)
                 {
                     // target is a player
-                    target.GetComponent<PlayerPortraitVisual>().HealthText.text = targetHealthAfter.ToString();
+                    target.GetComponent<PlayerPortraitVisual>().CurrentHealthText.text = targetHealthAfter.ToString();
                     target.GetComponent<PlayerPortraitVisual>().healthBar.SetHealth(targetHealthAfter); 
                 }
                 //else

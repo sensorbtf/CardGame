@@ -9,12 +9,14 @@ public class LoadDeckAndCharacterFromStaticClass : MonoBehaviour {
         Player p = GetComponent<Player>();
         if (BattleStartInfo.SelectedDeck != null)
         {
-            if (BattleStartInfo.SelectedDeck.Character!=null)
+            if (BattleStartInfo.SelectedDeck.Character != null)
+            {
                 p.charAsset = BattleStartInfo.SelectedDeck.Character;
-            Debug.LogWarning("LOADING: Character selected");
+            }    
+            //Debug.LogWarning("LOADING: Character selected");
             if (BattleStartInfo.SelectedDeck.Cards!=null)
                 p.deck.cards = new List<CardAsset>(BattleStartInfo.SelectedDeck.Cards);
-            Debug.LogWarning("LOADING: Cards loaded");
+            //Debug.LogWarning("LOADING: Cards loaded");
         }       
     }
 }

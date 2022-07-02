@@ -70,18 +70,26 @@ namespace Map
             {
                 case NodeType.MinorEnemy:
                     MapScreen.Instance.SelectDeck();
-                    MapScreen.Instance.SelectEnemyDeck();
+                    MapScreen.Instance.SelectEnemyDeck(); // 0 
                     SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.EliteEnemy:
                     MapScreen.Instance.SelectDeck();
-                    MapScreen.Instance.SelectEliteEnemyDeck();
+                    MapScreen.Instance.SelectEliteEnemyDeck(); //1
                     SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.RestSite:
-                    MapScreen.Instance.SelectDeckForEditing();
+                    MapScreen.Instance.SelectDeckForEditing(); 
                     MapScreen.Instance.HideScreen();
                     OuterMapParentVisibility.Instance.DeActivateMap();
+
+                    if (PlayerPrefs.HasKey("PlayerHealth"))
+                    {
+                        int currentHealth = PlayerPrefs.GetInt("PlayerHealth") +5;
+                        PlayerPrefs.SetInt("PlayerHealth", currentHealth);
+                        PlayerPrefs.Save();
+                    }
+                   
                     break;
                 case NodeType.Treasure:
                     break;
@@ -92,7 +100,7 @@ namespace Map
                     break;
                 case NodeType.Boss:
                     MapScreen.Instance.SelectDeck();
-                    MapScreen.Instance.SelectBossEnemyDeck();
+                    MapScreen.Instance.SelectBossEnemyDeck(); //2
                     SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.Mystery:

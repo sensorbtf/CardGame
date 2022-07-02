@@ -61,7 +61,6 @@ public class TurnManager : MonoBehaviour {
         CreatureLogic.CreaturesCreatedThisGame.Clear();
         foreach (Player p in Player.Players)
         {
-            p.Health = 20;
             p.ManaThisTurn = 4;
             p.ManaLeft = 4;
             p.LoadCharacterInfoFromAsset();

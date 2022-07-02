@@ -2,13 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class PlayerPortraitVisual : MonoBehaviour {
 
     public CharacterAsset charAsset;
 
-    public Text HealthText;
     public Text CurrentHealthText;
+    public Text MaxHealthText;
 
     public Image PortraitImage;
 
@@ -16,40 +17,59 @@ public class PlayerPortraitVisual : MonoBehaviour {
 
     public HealthBar healthBar;
 
-    public int currentHealth;
+
+
     void Start()
     {
-        currentHealth = playerScript.CurrentHealth;
+        //MaxHealthText.text = charAsset.MaxHealth.ToString();
+        //healthBar.SetMaxHealth(charAsset.MaxHealth);
+    }
+
+    void Awake()
+    {
+        var sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName == "MapScene")
+        {
+            if (charAsset != null)
+                ApplyLookFromAssetInMap();
+        }
+        else
+        {
+            if (charAsset != null)
+                ApplyLookFromAsset();
+        }
+    }
+    public void ApplyLookFromAsset(int health = 0)
+    {
+            CurrentHealthText.text = health == 0 ? charAsset.MaxHealth.ToString() : health.ToString();
+            MaxHealthText.text = charAsset.MaxHealth.ToString();
+
+            healthBar.SetMaxHealth(charAsset.MaxHealth);
+            healthBar.SetHealth(health == 0 ? charAsset.MaxHealth : health);
+
+            PortraitImage.sprite = charAsset.AvatarImage;
+    }
+
+    public void ApplyLookFromAssetInMap()
+    {
+        int currentHealth = PlayerPrefs.HasKey("PlayerHealth") ? PlayerPrefs.GetInt("PlayerHealth") : charAsset.MaxHealth;
+
+        CurrentHealthText.text = currentHealth.ToString();
+        MaxHealthText.text = charAsset.MaxHealth.ToString();
 
         healthBar.SetMaxHealth(charAsset.MaxHealth);
-
         healthBar.SetHealth(currentHealth);
-    }
-  
-    void Awake()
-	{
-        if (charAsset != null)
-			ApplyLookFromAsset();
-	}
-
-	public void ApplyLookFromAsset()
-    {
-        HealthText.text = charAsset.MaxHealth.ToString();
-        CurrentHealthText.text = playerScript.CurrentHealth.ToString();
 
         PortraitImage.sprite = charAsset.AvatarImage;
     }
-
     public void TakeDamage(int amount, int healthAfter)
     {
         if (amount > 0)
         {
             DamageEffect.CreateDamageEffect(transform.position, amount);
-            HealthText.text = healthAfter.ToString();
-            healthBar.SetHealth(healthAfter);
-
             CurrentHealthText.text = healthAfter.ToString();
-            currentHealth = healthAfter;
+            healthBar.SetHealth(healthAfter);
         }
     }
 
@@ -63,10 +83,11 @@ public class PlayerPortraitVisual : MonoBehaviour {
 
     public void CherryUp()
     {
-        Instantiate(GlobalSettings.Instance.ExplosionPrefab, transform.position, Quaternion.identity); // wizualnie dać cherring
-        Sequence s = DOTween.Sequence();
-        s.PrependInterval(2f);
-        s.OnComplete(() => GlobalSettings.Instance.VictoryPanel.SetActive(true));
+        //Instantiate(GlobalSettings.Instance.ExplosionPrefab, transform.position, Quaternion.identity); // wizualnie dać cherring
+        //Sequence s = DOTween.Sequence();
+        //s.PrependInterval(2f);
+        //s.OnComplete(() => 
+        GlobalSettings.Instance.VictoryPanel.SetActive(true);
     }
 
 }
