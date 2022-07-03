@@ -11,6 +11,8 @@ public class Player : MonoBehaviour, ICharacter
     // a script with references to all the visual game objects for this player
     public PlayerArea PArea;
 
+    public Map.MapPlayerTracker mapPlayerTracker;
+
     // REFERENCES TO LOGICAL STUFF THAT BELONGS TO THIS PLAYER
     public Deck deck;
     public Hand hand;
@@ -281,6 +283,7 @@ public class Player : MonoBehaviour, ICharacter
         otherPlayer.PArea.ControlsON = false;
         TurnManager.Instance.StopTheTimer();
         new VictoryCommand(this).AddToQueue();
+
     }
     public void Die()
         {

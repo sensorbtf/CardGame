@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,22 +56,23 @@ public class MapScreen : MonoBehaviour {
     {
         BattleStartInfo.SelectedDeck = DecksStorage.Instance.AllDecks[0];
     }
-    public void SelectEnemyDeck() // int choiceofenemy i potem w case
+    public void SelectEnemyDeck(int choiceOfEnemy) // int choiceofenemy i potem w case
     {
-        choiceOfEnemy = 0; Debug.LogWarning("Choice of normal: " + choiceOfEnemy);
-        BattleStartInfo.EnemyDeck = DecksStorage.Instance.enemyDecks[0];
-    }
-    public void SelectEliteEnemyDeck()
-    {
-        choiceOfEnemy = 1; Debug.LogWarning("Choice of Elite: " + choiceOfEnemy);
-
-        BattleStartInfo.EliteEnemyDeck = DecksStorage.Instance.eliteEnemyDecks[0];
-    }
-    public void SelectBossEnemyDeck()
-    {
-        choiceOfEnemy = 2; Debug.LogWarning("Choice of Boss: " + choiceOfEnemy);
-
-        BattleStartInfo.BossEnemyDeck = DecksStorage.Instance.bossEnemyDecks[0];
+        switch (choiceOfEnemy)
+        {
+            case 0:
+                Debug.LogWarning("Choice of normal: " + choiceOfEnemy);
+                BattleStartInfo.EnemyDeck = DecksStorage.Instance.enemyDecks[0];
+                break;
+            case 1:
+                BattleStartInfo.EliteEnemyDeck = DecksStorage.Instance.eliteEnemyDecks[0];
+                break;
+            case 2:
+                BattleStartInfo.BossEnemyDeck = DecksStorage.Instance.bossEnemyDecks[0];
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
     public void SelectDeckForEditing()
     {

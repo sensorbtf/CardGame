@@ -14,7 +14,7 @@ namespace Map
         public MapView view;
 
         public static MapPlayerTracker Instance;
-        public bool Locked { get; set; }
+        public bool isLocked { get; set; }
 
         private void Awake()
         {
@@ -23,9 +23,7 @@ namespace Map
 
         public void SelectNode(MapNode mapNode)
         {
-            if (Locked) return;
-
-            // Debug.Log("Selected node: " + mapNode.Node.point);
+            if (isLocked) return;
 
             if (mapManager.CurrentMap.path.Count == 0)
             {
@@ -49,7 +47,7 @@ namespace Map
 
         private void SendPlayerToNode(MapNode mapNode)
         {
-            Locked = lockAfterSelecting;
+            isLocked = lockAfterSelecting;
             mapManager.CurrentMap.path.Add(mapNode.Node.point);
             mapManager.SaveMap();
             view.SetAttainableNodes();
@@ -70,12 +68,12 @@ namespace Map
             {
                 case NodeType.MinorEnemy:
                     MapScreen.Instance.SelectDeck();
-                    MapScreen.Instance.SelectEnemyDeck(); // 0 
+                    MapScreen.Instance.SelectEnemyDeck(0); 
                     SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.EliteEnemy:
                     MapScreen.Instance.SelectDeck();
-                    MapScreen.Instance.SelectEliteEnemyDeck(); //1
+                    MapScreen.Instance.SelectEnemyDeck(1);
                     SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.RestSite:
@@ -93,7 +91,7 @@ namespace Map
                     break;
                 case NodeType.Boss:
                     MapScreen.Instance.SelectDeck();
-                    MapScreen.Instance.SelectBossEnemyDeck(); //2
+                    MapScreen.Instance.SelectEnemyDeck(2); 
                     SceneReloader.Instance.LoadRandomFightScene();
 
                     // dodać zmianę confingu mapy z racji przejścia do 2 aktu
