@@ -56,18 +56,23 @@ public class MapScreen : MonoBehaviour {
     {
         BattleStartInfo.SelectedDeck = DecksStorage.Instance.AllDecks[0];
     }
-    public void SelectEnemyDeck(int choiceOfEnemy) // int choiceofenemy i potem w case
+    public void SelectEnemyDeck(int choiceOfEnemyType) // int choiceofenemy i potem w case
     {
-        switch (choiceOfEnemy)
+        switch (choiceOfEnemyType)
         {
             case 0:
-                Debug.LogWarning("Choice of normal: " + choiceOfEnemy);
+                choiceOfEnemy=0;
+                Debug.LogWarning("Choice of normal: " + choiceOfEnemyType);
                 BattleStartInfo.EnemyDeck = DecksStorage.Instance.enemyDecks[0];
                 break;
             case 1:
+                choiceOfEnemy=1;
+                Debug.LogWarning("Choice of elite: " + choiceOfEnemyType);
                 BattleStartInfo.EliteEnemyDeck = DecksStorage.Instance.eliteEnemyDecks[0];
                 break;
             case 2:
+                choiceOfEnemy=2;
+                Debug.LogWarning("Choice of boss: " + choiceOfEnemyType);
                 BattleStartInfo.BossEnemyDeck = DecksStorage.Instance.bossEnemyDecks[0];
                 break;
             default:

@@ -8,9 +8,9 @@ public class LoadEnemyDeckAndCharacter : MonoBehaviour
     {
         Player p = GetComponent<Player>();
 
-        if (MapScreen.Instance.choiceOfEnemy == 0) // when false = normal, when true = boss
+        if (MapScreen.Instance.choiceOfEnemy == 0) 
         {
-            Debug.LogWarning("LOADED NORMAL");
+            Debug.LogWarning("LOADED NORMAL" + MapScreen.Instance.choiceOfEnemy);
             if (BattleStartInfo.EnemyDeck.Character != null)
                 p.charAsset = BattleStartInfo.EnemyDeck.Character;
             if (BattleStartInfo.EnemyDeck.Cards != null)
