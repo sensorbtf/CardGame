@@ -44,7 +44,7 @@ public class CreatureAttackVisual : MonoBehaviour
                 w.SetTableSortingOrder();
                 w.VisualState = tempState;
 
-                manager.HealthText.text = attackerHealthAfter.ToString();
+                manager.MaxHealthText.text = attackerHealthAfter.ToString();
                 Sequence s = DOTween.Sequence();
                 s.AppendInterval(1f);
                 s.OnComplete(Command.CommandExecutionComplete);

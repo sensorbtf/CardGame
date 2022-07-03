@@ -7,11 +7,12 @@ public class OneCreatureManager : MonoBehaviour
     public CardAsset cardAsset;
     public OneCardManager PreviewManager;
     [Header("Text Component References")]
-    public Text HealthText;
+    public Text MaxHealthText;
+    public Text CurrentHealthText;
     public Text AttackText;
     [Header("Image References")]
     public Image CreatureGraphicImage;
-    public Image CreatureGlowImage;
+    //public Image CreatureGlowImage;
     public HealthBar healthBar;
 
     void Awake()
@@ -32,7 +33,7 @@ public class OneCreatureManager : MonoBehaviour
         {
             canAttackNow = value;
 
-            CreatureGlowImage.enabled = value;
+            //CreatureGlowImage.enabled = value;
         }
     }
 
@@ -42,10 +43,10 @@ public class OneCreatureManager : MonoBehaviour
         CreatureGraphicImage.sprite = cardAsset.CardImage;
 
         AttackText.text = cardAsset.Attack.ToString();
-        HealthText.text = cardAsset.MaxHealth.ToString();
+        MaxHealthText.text = cardAsset.MaxHealth.ToString();
+        CurrentHealthText.text = cardAsset.MaxHealth.ToString();
 
         healthBar.SetMaxHealth(cardAsset.MaxHealth);
-
 
         if (PreviewManager != null)
         {
@@ -59,8 +60,9 @@ public class OneCreatureManager : MonoBehaviour
         if (amount > 0)
         {
             DamageEffect.CreateDamageEffect(transform.position, amount);
-            HealthText.text = healthAfter.ToString();
-            healthBar.SetHealth(healthAfter);  
+            MaxHealthText.text = healthAfter.ToString();
+            healthBar.SetHealth(healthAfter);
+            CurrentHealthText.text = healthAfter.ToString();
         }
     }
 }

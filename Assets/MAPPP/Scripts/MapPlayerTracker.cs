@@ -91,17 +91,19 @@ namespace Map
                     }
                    
                     break;
+                case NodeType.Boss:
+                    MapScreen.Instance.SelectDeck();
+                    MapScreen.Instance.SelectBossEnemyDeck(); //2
+                    SceneReloader.Instance.LoadRandomFightScene();
+
+                    // dodać zmianę confingu mapy z racji przejścia do 2 aktu
+                    break;
                 case NodeType.Treasure:
                     break;
                 case NodeType.Store:
                     SceneManager.LoadScene("ShopScene");
                     //odblokować Back TO Menu
                     SingleGameStart.TargetState = MenuState.ShopScreen;
-                    break;
-                case NodeType.Boss:
-                    MapScreen.Instance.SelectDeck();
-                    MapScreen.Instance.SelectBossEnemyDeck(); //2
-                    SceneReloader.Instance.LoadRandomFightScene();
                     break;
                 case NodeType.Mystery:
                     //randomize Store/Treasure/RestSite/Enemytypew/o Boss
